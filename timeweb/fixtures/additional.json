@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "total": 20
+  },
+  "servers_additional_services": [
+    {
+      "id": 184,
+      "name": "ddos_guard",
+      "price": 300
+    },
+    {
+      "id": 26,
+      "name": "ipv6vds",
+      "price": 0
+    },
+    {
+      "id": 185,
+      "name": "ip_ddos_guard",
+      "price": 80
+    },
+    {
+      "id": 57,
+      "name": "ip_vds",
+      "price": 200
+    },
+    {
+      "id": 167,
+      "name": "isp_business_one_month",
+      "price": 1750
+    },
+    {
+      "id": 373,
+      "name": "isp_host_one_month",
+      "price": 1250
+    },
+    {
+      "id": 164,
+      "name": "isp_lite_one_month",
+      "price": 390
+    },
+    {
+      "id": 369,
+      "name": "isp_pro_one_month",
+      "price": 750
+    },
+    {
+      "id": 20,
+      "name": "mail_10g",
+      "price": 199
+    },
+    {
+      "id": 269,
+      "name": "mail_10g_vds1",
+      "price": 90
+    },
+    {
+      "id": 18,
+      "name": "mail_1g",
+      "price": 20
+    },
+    {
+      "id": 267,
+      "name": "mail_1g_vds1",
+      "price": 9
+    },
+    {
+      "id": 19,
+      "name": "mail_5g",
+      "price": 99
+    },
+    {
+      "id": 268,
+      "name": "mail_5g_vds1",
+      "price": 45
+    },
+    {
+      "id": 71,
+      "name": "vds_backup_1g",
+      "price": 6
+    },
+    {
+      "id": 86,
+      "name": "windows_datacenter",
+      "price": 720
+    },
+    {
+      "id": 178,
+      "name": "windows_datacenter_2016",
+      "price": 720
+    },
+    {
+      "id": 179,
+      "name": "windows_datacenter_2019",
+      "price": 720
+    },
+    {
+      "id": 367,
+      "name": "windows_datacenter_2022",
+      "price": 720
+    },
+    {
+      "id": 377,
+      "name": "windows_datacenter_maxbot",
+      "price": 480
+    }
+  ],
+  "response_id": "b93d1762-b577-4d2f-b034-55517d5d494b"
+}

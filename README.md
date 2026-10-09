@@ -6,7 +6,7 @@ These are provisioning plugins, separate from the VPN packet transformation ABI.
 | Provider | Current implementation |
 | --- | --- |
 | DigitalOcean | Public-client OAuth/PKCE descriptor; account/balance; NL/DE offers and quotes; one Droplet creation; operation-tag reconciliation; owned resource deletion |
-| Timeweb Cloud | Token onboarding; account finances; locations; NL/DE offers and **incomplete** quotes. Purchases are disabled pending account verification of IPv4 cost and cloud-init networking. |
+| Timeweb Cloud | Token onboarding; live VPS + IPv4 quotes; NL/DE cloud-init creation in one POST; operation-name/comment reconciliation; deletion of the receipted VPS and IPv4. Requires client 0.4.4+. |
 | Example | Third provider demonstrating installation without rebuilding the client. No network or purchase operations. |
 
 This repository does not contain hosting credentials, device keys, or the signing private key.
@@ -31,9 +31,9 @@ Secrets are never included in `Call`; the host injects Bearer authorization.
 OAuth registration, code exchange, rotation and vault storage are host operations.
 
 The host rejects API redirects, origins outside the signed manifest, unauthenticated API
-requests, mutating calls made through the read interface, and more than one mutation per
-approved create/delete operation. Multi-resource providers need an explicitly approved
-and journaled resource transaction; do not hide additional purchases inside GET or onboarding.
+requests, mutating calls made through the read interface, and more than one POST per approved creation. Deletion may issue one DELETE per resource
+ID in the durable operation receipt, verifying ownership before deletion and absence afterward.
+Do not hide additional purchases inside GET or onboarding.
 
 ## Add a partner
 
@@ -81,5 +81,14 @@ before generating cloud-init. The VPS verifies the trusted binary SHA-256 before
 - [Timeweb API](https://timeweb.cloud/tools/api-docs)
 - [Timeweb cloud-init networking requirement](https://github.com/timeweb-cloud/terraform-provider-timeweb-cloud/blob/main/docs/resources/server.md)
 
-Live account permissions, billing, actual provisioning, reboot recovery, minimum VPS
-load and connectivity from Russian home/mobile networks require paid pilot acceptance.
+DigitalOcean and Timeweb paid pilots passed on 2026-10-09: signed cloud-init, pinned TLS/SSH,
+DNS/HTTPS/egress through a real tunnel, reboot, and owned-resource cleanup. Timeweb also passed
+portable encrypted recovery to a fresh vault. All pilot resources were deleted; pre-existing
+resources were preserved. Frankfurt returned `409 no_free_node`; this is handled as a definite
+capacity rejection, without an automatic purchase in a different location.
+
+The Timeweb API payload uses the first-party web console's `network.floating_ip: "create_ip"`
+transaction; this is verified live but is not fully described in the public OpenAPI schema.
+Fixtures contain only public catalog responses. Full Windows UI/OS route acceptance, Android
+hardware, minimum-VPS load, Russian home/mobile connectivity and affiliate attribution remain
+separate release gates. Short QUIC probes showed loss; other transports passed.
