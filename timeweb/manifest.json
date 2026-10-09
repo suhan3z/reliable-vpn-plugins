@@ -1,0 +1,1 @@
+{"id":"timeweb","name":"Timeweb Cloud","version":"0.1.0","abi":1,"min_app_version":"0.4.2","capabilities":{"auth":["api_token"],"registration":false,"payment":false,"cloud_init":true,"create":false,"delete":false},"api_origins":["https://api.timeweb.cloud"],"browser_origins":["https://timeweb.cloud"]}

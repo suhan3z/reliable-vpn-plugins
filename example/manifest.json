@@ -1,0 +1,1 @@
+{"id":"example","name":"SDK example (no purchases)","version":"0.1.0","abi":1,"min_app_version":"0.4.2","capabilities":{"auth":[],"registration":false,"payment":false,"cloud_init":false,"create":false,"delete":false},"api_origins":[],"browser_origins":[]}

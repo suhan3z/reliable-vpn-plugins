@@ -1,0 +1,1 @@
+{"id":"digitalocean","name":"DigitalOcean","version":"0.1.0","abi":1,"min_app_version":"0.4.2","capabilities":{"auth":["o_auth_pkce"],"registration":false,"payment":false,"cloud_init":true,"create":true,"delete":true},"api_origins":["https://api.digitalocean.com"],"browser_origins":["https://cloud.digitalocean.com"]}
