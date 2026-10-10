@@ -19,6 +19,7 @@ def main():
     p.add_argument("--tag", required=True)
     p.add_argument("--init-key", action="store_true")
     p.add_argument("--gateway", type=pathlib.Path)
+    p.add_argument("--routing-catalog", type=pathlib.Path, default=ROOT / "routing-lists" / "catalog.signed.json")
     args = p.parse_args()
     key_path = args.key.resolve()
     if key_path.is_relative_to(ROOT.parent): p.error("Signing key must be outside application and plugin repositories")
@@ -42,6 +43,14 @@ def main():
         entries.append({"id": name, "version": manifest["version"], "sha256": hashlib.sha256(data).hexdigest(), "url": f"https://github.com/suhan3z/reliable-vpn-plugins/releases/download/{args.tag}/{filename}"})
     catalog = {"generation": args.generation, "expires_at": int(time.time()) + 180 * 86400, "packages": entries, "revoked": []}
     (args.output / "catalog.json").write_bytes(signed(key, b"rvpn-provider-catalog-v1\0", catalog))
+    # Every latest release must retain both catalogs. Copy the already signed routing
+    # artifact unchanged; refreshing its expiry requires a new routing generation.
+    routing_bytes = args.routing_catalog.read_bytes()
+    routing_envelope = json.loads(routing_bytes)
+    routing_payload = base64.b64decode(routing_envelope["payload"], validate=True)
+    key.public_key().verify(base64.b64decode(routing_envelope["signature"], validate=True), b"rvpn-routing-catalog-v1\0" + routing_payload)
+    assert json.loads(routing_payload)["expires_at"] > int(time.time()), "Renew routing catalog with a new generation before publication"
+    (args.output / "routing-catalog.json").write_bytes(routing_bytes)
     if args.gateway:
         import shutil
         binary = args.gateway.read_bytes()

@@ -1,0 +1,28 @@
+name: Российское исключение
+description: Предложить домен, исправить категорию или сообщить о проблеме маршрутизации
+title: "[routing] "
+body:
+  - type: input
+    id: domain
+    attributes:
+      label: Домен
+      description: Только домен, без пути, параметров, токенов и личных данных
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Категория
+      options:
+        - Банки и платежи
+        - Госуслуги
+        - Магазины и доставка
+        - Медиа
+        - Социальные сети и экосистемы
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Источник и наблюдение
+      description: Официальный источник домена, ОС, сеть, результат напрямую и через VPN. Не отправляйте историю посещений или данные оплаты.
+    validations:
+      required: true

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "generation": 2,
+  "expires_at": 0,
+  "updated_at": "2026-10-10",
+  "categories": [
+    {"id":"banks","title":"Банки и платежи","default_enabled":true},
+    {"id":"government","title":"Госуслуги","default_enabled":true},
+    {"id":"shopping","title":"Магазины и доставка","default_enabled":false},
+    {"id":"media","title":"Медиа","default_enabled":false},
+    {"id":"ecosystems","title":"Социальные сети и экосистемы","default_enabled":false}
+  ],
+  "zones": ["ru", "xn--p1ai", "su"],
+  "entries": [
+    {"domain":"sberbank.ru","subdomains":true,"service":"Сбербанк","category":"banks","source":"https://cms-res-web.online.sberbank.ru/uniagreement/oferta.pdf","reason":"Прямой доступ к банку и Сбербанк Онлайн; наличие ограничений VPN не подтверждено для всех сетей.","checked_at":"2026-10-10"},
+    {"domain":"tbank.ru","subdomains":true,"service":"Т-Банк","category":"banks","source":"https://www.tbank.ru/help/","reason":"Прямой доступ к банку, входу и платежам; совместимость зависит от сети.","checked_at":"2026-10-10"},
+    {"domain":"securepay.tinkoff.ru","subdomains":false,"service":"Платежи Т-Банка","category":"banks","source":"https://www.tbank.ru/kassa/dev/payments/","reason":"Официальная документация эквайринга указывает securepay.tinkoff.ru для API и платежных форм. Добавлена конкретная зависимость, без всего tinkoff.ru.","checked_at":"2026-10-10"},
+    {"domain":"alfabank.ru","subdomains":true,"service":"Альфа-Банк","category":"banks","source":"https://alfabank.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
+    {"domain":"vtb.ru","subdomains":true,"service":"ВТБ","category":"banks","source":"https://www.vtb.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
+    {"domain":"gazprombank.ru","subdomains":true,"service":"Газпромбанк","category":"banks","source":"https://www.gazprombank.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
+    {"domain":"yookassa.ru","subdomains":true,"service":"ЮKassa","category":"banks","source":"https://yookassa.ru/developers/using-api/interaction-format","reason":"Платежные API и формы ЮKassa, которые используются другими сайтами.","checked_at":"2026-10-10"},
+    {"domain":"yoomoney.ru","subdomains":true,"service":"ЮMoney","category":"banks","source":"https://yoomoney.ru/","reason":"Кошелек и платежные формы; совместимость зависит от сети.","checked_at":"2026-10-10"},
+    {"domain":"gosuslugi.ru","subdomains":true,"service":"Госуслуги и ЕСИА","category":"government","source":"https://www.gosuslugi.ru/","reason":"Госуслуги и вход через ЕСИА на поддоменах gosuslugi.ru.","checked_at":"2026-10-10"},
+    {"domain":"nalog.gov.ru","subdomains":true,"service":"ФНС","category":"government","source":"https://www.nalog.gov.ru/rn77/","reason":"Официальный портал ФНС.","checked_at":"2026-10-10"},
+    {"domain":"nalog.ru","subdomains":true,"service":"Личные кабинеты ФНС","category":"government","source":"https://www.nalog.gov.ru/rn77/","reason":"Официальный портал ссылается на lkfl2.nalog.ru, lkip2.nalog.ru и service.nalog.ru.","checked_at":"2026-10-10"},
+    {"domain":"sfr.gov.ru","subdomains":true,"service":"Социальный фонд России","category":"government","source":"https://sfr.gov.ru/","reason":"Портал СФР и его электронные сервисы.","checked_at":"2026-10-10"},
+    {"domain":"es.pfrf.ru","subdomains":true,"service":"Электронные сервисы СФР","category":"government","source":"https://sfr.gov.ru/","reason":"Официальный портал СФР ссылается на es.pfrf.ru для получения СНИЛС.","checked_at":"2026-10-10"},
+    {"domain":"rosreestr.gov.ru","subdomains":true,"service":"Росреестр","category":"government","source":"https://rosreestr.gov.ru/","reason":"Портал Росреестра и личный кабинет.","checked_at":"2026-10-10"},
+    {"domain":"ozon.ru","subdomains":true,"service":"Ozon","category":"shopping","source":"https://www.ozon.ru/","reason":"Магазин и личный кабинет; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"wildberries.ru","subdomains":true,"service":"Wildberries","category":"shopping","source":"https://www.wildberries.ru/","reason":"Магазин и личный кабинет; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"pochta.ru","subdomains":true,"service":"Почта России","category":"shopping","source":"https://www.pochta.ru/","reason":"Отслеживание и доставка; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"cdek.ru","subdomains":true,"service":"СДЭК","category":"shopping","source":"https://www.cdek.ru/ru/","reason":"Отслеживание и доставка; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"rbc.ru","subdomains":true,"service":"РБК","category":"media","source":"https://www.rbc.ru/","reason":"Медиасервис; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"rutube.ru","subdomains":true,"service":"RUTUBE","category":"media","source":"https://rutube.ru/","reason":"Видеосервис; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"kinopoisk.ru","subdomains":true,"service":"Кинопоиск","category":"media","source":"https://www.kinopoisk.ru/","reason":"Медиасервис с региональным контентом; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"vk.com","subdomains":true,"service":"ВКонтакте","category":"ecosystems","source":"https://vk.com/","reason":"Социальная сеть; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"yandex.ru","subdomains":true,"service":"Яндекс","category":"ecosystems","source":"https://yandex.ru/","reason":"Сервисы Яндекса, включая паспорт; категория включается пользователем.","checked_at":"2026-10-10"},
+    {"domain":"mail.ru","subdomains":true,"service":"Mail","category":"ecosystems","source":"https://mail.ru/","reason":"Почта и вход через account.mail.ru; категория включается пользователем.","checked_at":"2026-10-10"}
+  ]
+}

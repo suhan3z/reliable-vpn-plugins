@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 routing-lists/validate.py
+      - run: python3 -m pip install cryptography
+      - run: python3 routing-lists/verify.py && python3 routing-lists/test_validate.py
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown

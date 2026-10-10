@@ -3,6 +3,8 @@
 Public source and signed release packages for `suhan3z/reliable-vpn-plugins`.
 These are provisioning plugins, separate from the VPN packet transformation ABI.
 
+Russian routing exceptions are maintained in [routing-lists](routing-lists/README.md), with independent categories, domain zones and a signed `routing-catalog.json` release asset. They do not change the provider ABI or provider catalog. Every latest release includes both catalogs; `publish.py` carries the current signed routing catalog unchanged.
+
 | Provider | Current implementation |
 | --- | --- |
 | DigitalOcean | Public-client OAuth/PKCE descriptor; account/balance; NL/DE offers and quotes; one Droplet creation; operation-tag reconciliation; owned resource deletion |
