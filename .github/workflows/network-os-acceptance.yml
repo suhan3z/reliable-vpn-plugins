@@ -1,0 +1,181 @@
+# Scoped disposable OS acceptance; encrypted recipient artifact from native attempt14.
+name: Owned VPN pilot OS traffic
+on:
+  push:
+    branches: [codex/network-os-acceptance]
+jobs:
+  windows-tun:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    environment: rvpn-pilot-01a1342a
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Attest disposable hosted Windows VM
+        shell: pwsh
+        run: |
+          if($env:GITHUB_REPOSITORY -ne 'suhan3z/reliable-vpn-plugins' -or $env:RUNNER_ENVIRONMENT -ne 'github-hosted' -or $env:GITHUB_REF -ne 'refs/heads/codex/network-os-acceptance'){throw 'Hosted isolated acceptance runner required'}
+          $computer=Get-CimInstance Win32_ComputerSystem
+          if($computer.Model -notmatch '^(Virtual Machine|VMware Virtual Platform|VirtualBox|KVM|Standard PC \(|QEMU)'){throw 'Virtual machine required'}
+          $directory=Join-Path $env:ProgramData 'ReliableVPN-Lab'
+          New-Item -ItemType Directory -Force $directory|Out-Null
+          @{role='reliable-vpn-disposable-test-guest';uuid=(Get-CimInstance Win32_ComputerSystemProduct).UUID;task='network-os-01a1342a'}|ConvertTo-Json|Set-Content (Join-Path $directory 'guest.json')
+      - name: Download scoped signed candidate and encrypted recipient
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory assets,source,receipts,fixtures|Out-Null
+          gh release download network-v2-0.2.0 -R suhan3z/reliable-vpn-plugins -D assets -p root.pub -p release-assets-v2.json -p network-plugins-v2.json -p network-suite-0.2.0-windows-x86_64.rvnp -p client-matching-source.tar.gz -p ReliableVPN-Windows-0.7.0-alpha.zip
+          if($LASTEXITCODE){throw 'Candidate download failed'}
+          python -c "import subprocess,zipfile;f=open('recipient.zip','wb');subprocess.run(['gh','api','repos/suhan3z/reliable-vpn-plugins/actions/artifacts/11909506500/zip'],stdout=f,check=True);f.close();zipfile.ZipFile('recipient.zip').extractall('encrypted')"
+      - name: Verify pinned signatures before source extraction
+        shell: python
+        run: |
+          import base64,hashlib,json,pathlib,subprocess,tarfile
+          subprocess.run(['python','-m','pip','install','--quiet','cryptography'],check=True)
+          from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+          root='QgsX33BwqzdoA5s8IOKd8n5/bxczmzL2gBX8JowgQ5k='
+          directory=pathlib.Path('assets');assert (directory/'root.pub').read_text().strip()==root
+          envelope=json.loads((directory/'release-assets-v2.json').read_bytes());payload=base64.b64decode(envelope['payload'],validate=True)
+          Ed25519PublicKey.from_public_bytes(base64.b64decode(root)).verify(base64.b64decode(envelope['signature'],validate=True),b'rvpn-release-assets-v2\0'+payload)
+          manifest=json.loads(payload);assert manifest['generation']==2026101405
+          files={file['name']:file for file in manifest['files']}
+          for path in directory.iterdir():
+              if path.name=='release-assets-v2.json':continue
+              expected=files[path.name];assert path.stat().st_size==expected['size'] and hashlib.sha256(path.read_bytes()).hexdigest()==expected['sha256']
+          with tarfile.open(directory/'client-matching-source.tar.gz') as archive:archive.extractall('source',filter='data')
+          print('Pinned signature and every downloaded asset hash verified.')
+      - name: Install the same AdGuard VPN build as the primary host
+        shell: pwsh
+        run: |
+          $url='https://github.com/AdguardTeam/AdGuardVPNForWindows/releases/download/v2.10.1/AdGuardVpn-2.10.1.2314.exe'
+          curl.exe --location --fail --silent --show-error --output adguard-lab-installer.exe $url
+          if($LASTEXITCODE){throw 'AdGuard download failed'}
+          if((Get-FileHash -LiteralPath adguard-lab-installer.exe -Algorithm SHA256).Hash -ne 'CC72817352C052941CCF6648768B08DB1EE60A0AF090A50BD8FF19082B706D9F'){throw 'AdGuard digest mismatch'}
+          $signature=Get-AuthenticodeSignature -FilePath adguard-lab-installer.exe
+          if($signature.Status -ne 'Valid' -or $signature.SignerCertificate.Subject -notmatch 'Adguard'){throw 'AdGuard publisher mismatch'}
+          $process=Start-Process -FilePath "$PWD/adguard-lab-installer.exe" -WindowStyle Hidden -ArgumentList @('-quiet','-norestart','-log',"$PWD/receipts/adguard-install.log") -PassThru -Wait
+          if($process.ExitCode -notin @(0,3010)){throw 'AdGuard installation failed'}
+          $service=Get-Service -Name 'Adguard VPN Service'
+          $service.WaitForStatus('Running',[TimeSpan]::FromSeconds(30))
+          @{version='2.10.1.2314';service_running=$true;account_imported=$false;vpn_connection_tested=$false;primary_host_changed=$false}|ConvertTo-Json|Set-Content receipts/adguard-install.json
+      - name: Unseal only this recipient
+        shell: pwsh
+        env:
+          RVPN_TEST_EXPORT_KEY: ${{ secrets.RVPN_TEST_EXPORT_KEY }}
+        run: python source/client/ops/personal/ci-recipient.py --input encrypted/recipient-profile.aesgcm --output fixtures/windows.json --platform windows
+      - name: Install guarded Windows client and verified plugins
+        shell: pwsh
+        run: |
+          Expand-Archive assets/ReliableVPN-Windows-0.7.0-alpha.zip -DestinationPath installer
+          & ./installer/install.ps1
+          if($LASTEXITCODE){throw 'Client installation failed'}
+          $binary=Join-Path $env:ProgramFiles 'ReliableVPN/rvpn.exe'
+          & $binary network-install --catalog "$PWD/assets/network-plugins-v2.json" --packages "$PWD/assets" --directory "$env:ProgramData/ReliableVPN/network-plugins"
+          if($LASTEXITCODE){throw 'Signed plugin installation failed'}
+      - name: Verify native paths and Auto using actual Wintun traffic
+        shell: pwsh
+        run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults'
+      - name: Preserve safe Windows evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rvpn-windows-tun-${{ github.run_id }}-${{ github.run_attempt }}
+          path: receipts/*.json
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Remove recipient plaintext
+        if: always()
+        shell: pwsh
+        run: if(Test-Path -LiteralPath fixtures/windows.json){Remove-Item -LiteralPath fixtures/windows.json}
+  android-tun:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment: rvpn-pilot-01a1342a
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Download scoped signed candidate and encrypted recipient
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          test "$GITHUB_REPOSITORY" = suhan3z/reliable-vpn-plugins
+          test "$GITHUB_REF" = refs/heads/codex/network-os-acceptance
+          mkdir -m 700 assets source receipts fixtures
+          gh release download network-v2-0.2.0 -R suhan3z/reliable-vpn-plugins -D assets \
+            -p root.pub -p release-assets-v2.json -p network-plugins-v2.json \
+            -p network-suite-0.2.0-android-x86_64.rvnp -p network-host-0.7.0-linux-x86_64 \
+            -p client-matching-source.tar.gz -p app-debug.apk -p app-debug-androidTest.apk -p traffic-probe-debug.apk
+          gh api repos/suhan3z/reliable-vpn-plugins/actions/artifacts/11909506500/zip > recipient.zip
+          unzip -q recipient.zip -d encrypted
+      - name: Verify pinned signatures before source extraction
+        run: |
+          python3 -m pip install --quiet cryptography
+          python3 - <<'PY'
+          import base64,hashlib,json,pathlib,tarfile
+          from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+          root='QgsX33BwqzdoA5s8IOKd8n5/bxczmzL2gBX8JowgQ5k='
+          directory=pathlib.Path('assets');assert (directory/'root.pub').read_text().strip()==root
+          envelope=json.loads((directory/'release-assets-v2.json').read_bytes());payload=base64.b64decode(envelope['payload'],validate=True)
+          Ed25519PublicKey.from_public_bytes(base64.b64decode(root)).verify(base64.b64decode(envelope['signature'],validate=True),b'rvpn-release-assets-v2\0'+payload)
+          manifest=json.loads(payload);assert manifest['generation']==2026101405
+          files={file['name']:file for file in manifest['files']}
+          for path in directory.iterdir():
+              if path.name=='release-assets-v2.json':continue
+              expected=files[path.name];assert path.stat().st_size==expected['size'] and hashlib.sha256(path.read_bytes()).hexdigest()==expected['sha256']
+          with tarfile.open(directory/'client-matching-source.tar.gz') as archive:archive.extractall('source',filter='data')
+          print('Pinned signature and every downloaded asset hash verified.')
+          PY
+      - name: Unseal only this recipient
+        env:
+          RVPN_TEST_EXPORT_KEY: ${{ secrets.RVPN_TEST_EXPORT_KEY }}
+        run: python3 source/client/ops/personal/ci-recipient.py --input encrypted/recipient-profile.aesgcm --output fixtures/android.json --platform android
+      - name: Prepare dedicated Android emulator
+        run: |
+          test -c /dev/kvm
+          sudo chmod a+rw /dev/kvm
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'system-images;android-35;google_apis;x86_64' > receipts/sdk-install.log || test "${PIPESTATUS[1]}" = 0
+          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rvpn-network-01a1342a -k 'system-images;android-35;google_apis;x86_64' --force
+          "$ANDROID_HOME/emulator/emulator" -avd rvpn-network-01a1342a -port 5630 -no-window -no-audio -no-snapshot -no-boot-anim -gpu swiftshader_indirect > receipts/emulator.log 2>&1 &
+          "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 wait-for-device
+          for attempt in $(seq 1 120); do
+            test "$("$ANDROID_HOME/platform-tools/adb" -s emulator-5630 shell getprop sys.boot_completed | tr -d '\r')" != 1 || break
+            sleep 2
+          done
+          test "$("$ANDROID_HOME/platform-tools/adb" -s emulator-5630 shell getprop sys.boot_completed | tr -d '\r')" = 1
+      - name: Install separate lab APK and verified plugin cache
+        run: |
+          adb="$ANDROID_HOME/platform-tools/adb"
+          "$adb" -s emulator-5630 install assets/app-debug.apk
+          "$adb" -s emulator-5630 install assets/app-debug-androidTest.apk
+          "$adb" -s emulator-5630 install assets/traffic-probe-debug.apk
+          "$adb" -s emulator-5630 shell pm grant app.reliablevpn.lab android.permission.POST_NOTIFICATIONS
+          chmod 700 assets/network-host-0.7.0-linux-x86_64
+          assets/network-host-0.7.0-linux-x86_64 network-install --catalog "$PWD/assets/network-plugins-v2.json" --packages "$PWD/assets" --directory "$PWD/cache" --platform android-x86_64
+          tar -C cache -cf cache.tar .
+          "$adb" -s emulator-5630 push cache.tar /data/local/tmp/rvpn-network-cache.tar
+          "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab mkdir -p files/network-plugins
+          "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab tar -xf /data/local/tmp/rvpn-network-cache.tar -C files/network-plugins
+          "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab tee files/network-live-fixture.json < fixtures/android.json > /dev/null
+          "$adb" -s emulator-5630 shell input keyevent 82
+      - name: Verify native paths and Auto using actual VpnService traffic
+        run: |
+          "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 shell am instrument -w -e class app.reliablevpn.NetworkPluginLiveTest app.reliablevpn.lab.test/androidx.test.runner.AndroidJUnitRunner | tee receipts/android-instrumentation.log
+          grep -q 'OK (1 test)' receipts/android-instrumentation.log
+      - name: Preserve safe Android evidence
+        if: always()
+        run: |
+          "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 exec-out run-as app.reliablevpn.lab cat files/network-live-results.json > receipts/android-native-tun.json || true
+          rm -f fixtures/android.json
+      - name: Upload safe Android evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rvpn-android-tun-${{ github.run_id }}-${{ github.run_attempt }}
+          path: receipts/
+          if-no-files-found: ignore
+          retention-days: 7
