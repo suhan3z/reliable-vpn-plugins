@@ -1,0 +1,39 @@
+name: Owned VPN pilot connectivity
+on:
+  push:
+    branches: [codex/network-pilot-connectivity]
+permissions:
+  contents: read
+jobs:
+  connectivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Probe owned pilot without credentials
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures,datetime,json,socket,subprocess,sys,time
+          host='147.45.166.68'
+          def probe(port):
+              begin=time.monotonic()
+              try:
+                  with socket.create_connection((host,port),6) as connection:
+                      return {'port':port,'tcp':'OPEN','milliseconds':round((time.monotonic()-begin)*1000)}
+              except ConnectionRefusedError:
+                  return {'port':port,'tcp':'REFUSED'}
+              except TimeoutError:
+                  return {'port':port,'tcp':'TIMEOUT'}
+              except OSError as error:
+                  return {'port':port,'tcp':'UNAVAILABLE','errno':error.errno}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+              checks=list(pool.map(probe,[22,80,443,4443]))
+          fingerprints=[]
+          if any(check['port']==22 and check['tcp']=='OPEN' for check in checks):
+              scanned=subprocess.run(['ssh-keyscan','-T','5',host],capture_output=True,timeout=20)
+              public=subprocess.run(['ssh-keygen','-lf','-'],input=scanned.stdout,capture_output=True,timeout=5)
+              fingerprints=[line.split()[1] for line in public.stdout.decode().splitlines() if len(line.split())>=2 and line.split()[1].startswith('SHA256:')]
+          receipt={'task':'network-01a1342a','server_id':9338065,'ip':host,'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'environment':'isolated GitHub Linux runner','checks':checks,'ssh_public_fingerprints':fingerprints,'full_traffic_acceptance':False,'credentials_used':False}
+          print('RVPN_CONNECTIVITY_RECEIPT='+json.dumps(receipt,separators=(',',':')),flush=True)
+          sys.exit(0 if fingerprints else 1)
+          PY
