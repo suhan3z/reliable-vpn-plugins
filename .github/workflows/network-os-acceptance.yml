@@ -73,7 +73,11 @@ jobs:
           & ./installer/install.ps1
           if($LASTEXITCODE){throw 'Client installation failed'}
           $binary=Join-Path $env:ProgramFiles 'ReliableVPN/rvpn.exe'
-          & $binary network-install --catalog "$PWD/assets/network-plugins-v2.json" --packages "$PWD/assets" --directory "$env:ProgramData/ReliableVPN/network-plugins"
+          $assets=Join-Path $env:GITHUB_WORKSPACE 'assets'
+          foreach($inputFile in @('network-plugins-v2.json','network-suite-0.2.0-windows-x86_64.rvnp')){
+            if(!(Test-Path -LiteralPath (Join-Path $assets $inputFile))){throw ('candidate_input_missing_'+$inputFile)}
+          }
+          & $binary network-install --catalog (Join-Path $assets 'network-plugins-v2.json') --packages $assets --directory (Join-Path $env:ProgramData 'ReliableVPN/network-plugins')
           if($LASTEXITCODE){throw 'Signed plugin installation failed'}
       - name: Verify native paths and Auto using actual Wintun traffic
         shell: pwsh
@@ -138,11 +142,18 @@ jobs:
         run: |
           test -c /dev/kvm
           sudo chmod a+rw /dev/kvm
+          export ANDROID_USER_HOME="$RUNNER_TEMP/rvpn-android-01a1342a"
+          export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'system-images;android-35;google_apis;x86_64' > receipts/sdk-install.log || test "${PIPESTATUS[1]}" = 0
-          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rvpn-network-01a1342a -k 'system-images;android-35;google_apis;x86_64' --force
-          "$ANDROID_HOME/emulator/emulator" -avd rvpn-network-01a1342a -port 5630 -no-window -no-audio -no-snapshot -no-boot-anim -gpu swiftshader_indirect > receipts/emulator.log 2>&1 &
-          "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 wait-for-device
+          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rvpn-network-01a1342a -p "$ANDROID_AVD_HOME/device.avd" -k 'system-images;android-35;google_apis;x86_64' --force
+          test -f "$ANDROID_AVD_HOME/device.avd/config.ini"
+          printf 'avd.ini.encoding=UTF-8\npath=%s\n' "$ANDROID_AVD_HOME/device.avd" > "$ANDROID_AVD_HOME/rvpn-network-01a1342a.ini"
+          "$ANDROID_HOME/emulator/emulator" -avd rvpn-network-01a1342a -port 5630 -no-window -no-audio -no-snapshot -no-boot-anim -memory 2048 -cores 2 -gpu swiftshader_indirect > receipts/emulator.log 2>&1 &
+          emulator_pid=$!
+          timeout 120 "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 wait-for-device || { cat receipts/emulator.log; exit 1; }
           for attempt in $(seq 1 120); do
+            kill -0 "$emulator_pid" || { cat receipts/emulator.log; exit 1; }
             test "$("$ANDROID_HOME/platform-tools/adb" -s emulator-5630 shell getprop sys.boot_completed | tr -d '\r')" != 1 || break
             sleep 2
           done
