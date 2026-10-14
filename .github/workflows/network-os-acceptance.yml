@@ -3,8 +3,18 @@ name: Owned VPN pilot OS traffic
 on:
   push:
     branches: [codex/network-os-acceptance]
+  workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        options: [both, windows, android]
+        default: both
+      apis:
+        type: string
+        default: '[35,29,36]'
 jobs:
   windows-tun:
+    if: github.event_name == 'push' || inputs.target != 'android'
     runs-on: windows-2022
     timeout-minutes: 45
     environment: rvpn-pilot-01a1342a
@@ -79,6 +89,9 @@ jobs:
           }
           & $binary network-install --catalog (Join-Path $assets 'network-plugins-v2.json') --packages $assets --directory (Join-Path $env:ProgramData 'ReliableVPN/network-plugins')
           if($LASTEXITCODE){throw 'Signed plugin installation failed'}
+      - name: Verify native packet IPC and Windows durable monitor save
+        shell: pwsh
+        run: '& ./source/client/ops/windows-lab/test-network-cache.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-cache.json"'
       - name: Verify native paths and Auto using actual Wintun traffic
         shell: pwsh
         run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults'
@@ -95,9 +108,14 @@ jobs:
         shell: pwsh
         run: if(Test-Path -LiteralPath fixtures/windows.json){Remove-Item -LiteralPath fixtures/windows.json}
   android-tun:
+    if: github.event_name == 'push' || inputs.target != 'windows'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     environment: rvpn-pilot-01a1342a
+    strategy:
+      max-parallel: 1
+      matrix:
+        api: ${{ fromJSON(inputs.apis || '[35,29,36]') }}
     permissions:
       contents: write
       actions: read
@@ -139,14 +157,18 @@ jobs:
           RVPN_TEST_EXPORT_KEY: ${{ secrets.RVPN_TEST_EXPORT_KEY }}
         run: python3 source/client/ops/personal/ci-recipient.py --input encrypted/recipient-profile.aesgcm --output fixtures/android.json --platform android
       - name: Prepare dedicated Android emulator
+        env:
+          RVPN_ANDROID_API: ${{ matrix.api }}
         run: |
+          case "$RVPN_ANDROID_API" in 29|35|36) ;; *) exit 1 ;; esac
           test -c /dev/kvm
           sudo chmod a+rw /dev/kvm
           export ANDROID_USER_HOME="$RUNNER_TEMP/rvpn-android-01a1342a"
           export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
           mkdir -p "$ANDROID_AVD_HOME"
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'system-images;android-35;google_apis;x86_64' > receipts/sdk-install.log || test "${PIPESTATUS[1]}" = 0
-          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rvpn-network-01a1342a -p "$ANDROID_AVD_HOME/device.avd" -k 'system-images;android-35;google_apis;x86_64' --force
+          image="system-images;android-$RVPN_ANDROID_API;google_apis;x86_64"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "$image" > receipts/sdk-install.log || test "${PIPESTATUS[1]}" = 0
+          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rvpn-network-01a1342a -p "$ANDROID_AVD_HOME/device.avd" -k "$image" --force
           test -f "$ANDROID_AVD_HOME/device.avd/config.ini"
           printf 'avd.ini.encoding=UTF-8\npath=%s\n' "$ANDROID_AVD_HOME/device.avd" > "$ANDROID_AVD_HOME/rvpn-network-01a1342a.ini"
           "$ANDROID_HOME/emulator/emulator" -avd rvpn-network-01a1342a -port 5630 -no-window -no-audio -no-snapshot -no-boot-anim -memory 2048 -cores 2 -gpu swiftshader_indirect > receipts/emulator.log 2>&1 &
@@ -164,7 +186,7 @@ jobs:
           "$adb" -s emulator-5630 install assets/app-debug.apk
           "$adb" -s emulator-5630 install assets/app-debug-androidTest.apk
           "$adb" -s emulator-5630 install assets/traffic-probe-debug.apk
-          "$adb" -s emulator-5630 shell pm grant app.reliablevpn.lab android.permission.POST_NOTIFICATIONS
+          if test '${{ matrix.api }}' -ge 33; then "$adb" -s emulator-5630 shell pm grant app.reliablevpn.lab android.permission.POST_NOTIFICATIONS; fi
           chmod 700 assets/network-host-0.7.0-linux-x86_64
           assets/network-host-0.7.0-linux-x86_64 network-install --catalog "$PWD/assets/network-plugins-v2.json" --packages "$PWD/assets" --directory "$PWD/cache" --platform android-x86_64
           tar -C cache -cf cache.tar .
@@ -175,8 +197,7 @@ jobs:
           "$adb" -s emulator-5630 shell input keyevent 82
       - name: Verify native paths and Auto using actual VpnService traffic
         run: |
-          "$ANDROID_HOME/platform-tools/adb" -s emulator-5630 shell am instrument -w -e class app.reliablevpn.NetworkPluginLiveTest app.reliablevpn.lab.test/androidx.test.runner.AndroidJUnitRunner | tee receipts/android-instrumentation.log
-          grep -q 'OK (1 test)' receipts/android-instrumentation.log
+          python3 source/client/ops/android_lab/network_pilot_faults.py --adb "$ANDROID_HOME/platform-tools/adb" --output receipts/android-instrumentation.log
       - name: Preserve safe Android evidence
         if: always()
         run: |
@@ -186,7 +207,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rvpn-android-tun-${{ github.run_id }}-${{ github.run_attempt }}
+          name: rvpn-android-${{ matrix.api }}-tun-${{ github.run_id }}-${{ github.run_attempt }}
           path: receipts/
           if-no-files-found: ignore
           retention-days: 7
