@@ -22,8 +22,8 @@ on:
         type: string
         default: '0'
 env:
-  CONTINUITY_AT: '1792084374'
-  SERVER_EVENT_AT: '1792084524'
+  CONTINUITY_AT: '1792085315'
+  SERVER_EVENT_AT: '1792085525'
 jobs:
   windows-tun:
     if: github.event_name == 'push' || inputs.target != 'android'
