@@ -63,3 +63,5 @@ jobs:
           for _ in range(1440):
               for pid in processes:os.kill(pid,0)
               time.sleep(5)
+
+# Scoped renewal for final lifecycle and public delivery.
