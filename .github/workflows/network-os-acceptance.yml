@@ -198,7 +198,7 @@ jobs:
           tar -C cache -cf cache.tar .
           "$adb" -s emulator-5630 push cache.tar /data/local/tmp/rvpn-network-cache.tar
           "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab mkdir -p files/network-plugins
-          "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab tar -xf /data/local/tmp/rvpn-network-cache.tar -C files/network-plugins
+          "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab tar --no-same-owner -xf /data/local/tmp/rvpn-network-cache.tar -C files/network-plugins
           "$adb" -s emulator-5630 shell run-as app.reliablevpn.lab tee files/network-live-fixture.json < fixtures/android.json > /dev/null
           "$adb" -s emulator-5630 shell input keyevent 82
       - name: Verify native paths and Auto using actual VpnService traffic
