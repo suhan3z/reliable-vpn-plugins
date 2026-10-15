@@ -22,8 +22,8 @@ on:
         type: string
         default: '0'
 env:
-  CONTINUITY_AT: '1792083740'
-  SERVER_EVENT_AT: '1792083890'
+  CONTINUITY_AT: '1792084374'
+  SERVER_EVENT_AT: '1792084524'
 jobs:
   windows-tun:
     if: github.event_name == 'push' || inputs.target != 'android'
@@ -152,7 +152,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rvpn-windows-tun-${{ github.run_id }}-${{ github.run_attempt }}
-          path: receipts/*.json
+          path: |
+            receipts/*.json
+            receipts/windows-continuity*.log
           if-no-files-found: ignore
           retention-days: 7
       - name: Remove recipient plaintext
