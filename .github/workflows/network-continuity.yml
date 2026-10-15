@@ -22,8 +22,8 @@ on:
         type: string
         default: '0'
 env:
-  CONTINUITY_AT: '1792083452'
-  SERVER_EVENT_AT: '1792083602'
+  CONTINUITY_AT: '1792083447'
+  SERVER_EVENT_AT: '1792083597'
 jobs:
   windows-tun:
     if: github.event_name == 'push' || inputs.target != 'android'
@@ -111,8 +111,12 @@ jobs:
         shell: pwsh
         run: |
           $deadline=[DateTimeOffset]::FromUnixTimeSeconds([long]$env:CONTINUITY_AT-20).UtcDateTime
-          while(!(Test-Path receipts/windows-continuity-ready.json) -and [DateTime]::UtcNow -lt $deadline){if(Test-Path receipts/windows-continuity.done){throw 'continuity_finished_before_ready'};Start-Sleep -Seconds 2}
-          $ready=Get-Content receipts/windows-continuity-ready.json -Raw|ConvertFrom-Json
+          $ready=$null
+          while([DateTime]::UtcNow -lt $deadline){
+            if(Test-Path receipts/windows-continuity-ready.json){try{$ready=Get-Content receipts/windows-continuity-ready.json -Raw|ConvertFrom-Json -ErrorAction Stop;if($ready){break}}catch{}}
+            if(Test-Path receipts/windows-continuity.done){throw 'continuity_finished_before_ready'}
+            Start-Sleep -Milliseconds 500
+          }
           if($ready.result -ne 'READY' -or !$ready.protected -or $ready.egress -ne '147.45.166.68'){throw 'invalid_continuity_readiness'}
       - name: Publish safe Windows readiness before reboot
         uses: actions/upload-artifact@v4
@@ -124,8 +128,12 @@ jobs:
         shell: pwsh
         run: |
           $deadline=[DateTimeOffset]::FromUnixTimeSeconds([long]$env:SERVER_EVENT_AT-8).UtcDateTime
-          while(!(Test-Path receipts/windows-continuity-120s.json) -and [DateTime]::UtcNow -lt $deadline){if(Test-Path receipts/windows-continuity.done){throw 'continuity_finished_before_120s'};Start-Sleep -Seconds 1}
-          $proof=Get-Content receipts/windows-continuity-120s.json -Raw|ConvertFrom-Json
+          $proof=$null
+          while([DateTime]::UtcNow -lt $deadline){
+            if(Test-Path receipts/windows-continuity-120s.json){try{$proof=Get-Content receipts/windows-continuity-120s.json -Raw|ConvertFrom-Json -ErrorAction Stop;if($proof){break}}catch{}}
+            if(Test-Path receipts/windows-continuity.done){throw 'continuity_finished_before_120s'}
+            Start-Sleep -Milliseconds 500
+          }
           if($proof.result -ne 'PASS' -or !$proof.all_protected_dns_https_expected_egress -or $proof.last_started_ms-$proof.first_started_ms -lt 120000){throw 'windows_120s_not_proven'}
       - name: Publish safe Windows traffic proof before reboot
         uses: actions/upload-artifact@v4
@@ -248,8 +256,11 @@ jobs:
           target=pathlib.Path('receipts/android-continuity-ready.json')
           while time.time()<int(os.environ['CONTINUITY_AT'])-20:
               r=subprocess.run([os.environ['ANDROID_HOME']+'/platform-tools/adb','-s','emulator-5630','exec-out','run-as','app.reliablevpn.lab','cat','files/network-continuity-ready.json'],capture_output=True)
-              if r.returncode==0:
-                  v=json.loads(r.stdout);assert v['result']=='READY' and v['protected'] and v['egress']=='147.45.166.68';target.write_bytes(r.stdout);break
+              if r.returncode==0 and r.stdout.strip():
+                  try:v=json.loads(r.stdout)
+                  except ValueError:v=None
+                  if v is not None:
+                      assert v['result']=='READY' and v['protected'] and v['dns'] and v['https'] and v['egress']=='147.45.166.68';target.write_bytes(r.stdout);break
               assert not pathlib.Path('receipts/android-continuity.done').exists(),'continuity_finished_before_ready'
               time.sleep(2)
           assert target.exists(),'android_readiness_deadline'
@@ -267,8 +278,11 @@ jobs:
           target=pathlib.Path('receipts/android-continuity-120s.json')
           while time.time()<int(os.environ['SERVER_EVENT_AT'])-8:
               r=subprocess.run([os.environ['ANDROID_HOME']+'/platform-tools/adb','-s','emulator-5630','exec-out','run-as','app.reliablevpn.lab','cat','files/network-continuity-120s.json'],capture_output=True)
-              if r.returncode==0:
-                  v=json.loads(r.stdout);assert v['result']=='PASS' and v['all_protected_dns_https_expected_egress'] and v['last_started_ms']-v['first_started_ms']>=120000;target.write_bytes(r.stdout);break
+              if r.returncode==0 and r.stdout.strip():
+                  try:v=json.loads(r.stdout)
+                  except ValueError:v=None
+                  if v is not None:
+                      assert v['result']=='PASS' and v['all_protected_dns_https_expected_egress'] and v['last_started_ms']-v['first_started_ms']>=120000;target.write_bytes(r.stdout);break
               assert not pathlib.Path('receipts/android-continuity.done').exists(),'continuity_finished_before_120s'
               time.sleep(1)
           assert target.exists(),'android_120s_deadline'
