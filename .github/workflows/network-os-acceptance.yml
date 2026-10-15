@@ -97,7 +97,7 @@ jobs:
         run: '& ./source/client/ops/windows-lab/test-network-cache.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-cache.json"'
       - name: Verify native paths and Auto using actual Wintun traffic
         shell: pwsh
-        run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults'
+        run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults -FaultsOnly:([string]''${{ inputs.faults_only }}'' -eq ''true'')'
       - name: Preserve safe Windows evidence
         if: always()
         uses: actions/upload-artifact@v4
