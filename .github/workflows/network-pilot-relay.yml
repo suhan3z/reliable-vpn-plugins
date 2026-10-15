@@ -5,7 +5,7 @@ on:
 jobs:
   scoped-relay:
     runs-on: ubuntu-24.04
-    timeout-minutes: 65
+    timeout-minutes: 130
     environment: rvpn-pilot-01a1342a
     permissions:
       contents: read
@@ -44,7 +44,7 @@ jobs:
               if match:url=match.group(0);break
               time.sleep(1)
           if not url:raise SystemExit('relay_url_missing')
-          data=json.dumps({'url':url,'uuid':user,'path':path,'scope':'owned pilot 9338065 and authenticated hosting API/public signed distribution only','server_pid':server.pid,'tunnel_pid':tunnel.pid}).encode()
+          data=json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'url':url,'uuid':user,'path':path,'scope':'owned pilot 9338065 and authenticated hosting API/public signed distribution only','server_pid':server.pid,'tunnel_pid':tunnel.pid}).encode()
           key=base64.b64decode(os.environ.pop('RVPN_TEST_EXPORT_KEY'),validate=True);nonce=os.urandom(12)
           pathlib.Path('receipts/relay.aesgcm').write_bytes(nonce+AESGCM(key).encrypt(nonce,data,b'rvpn-pilot-relay-01a1342a'))
           pathlib.Path('private/pids.json').write_text(json.dumps([server.pid,tunnel.pid]))
@@ -60,6 +60,6 @@ jobs:
         run: |
           import json,os,pathlib,time
           processes=json.loads(pathlib.Path('private/pids.json').read_text())
-          for _ in range(720):
+          for _ in range(1440):
               for pid in processes:os.kill(pid,0)
               time.sleep(5)
