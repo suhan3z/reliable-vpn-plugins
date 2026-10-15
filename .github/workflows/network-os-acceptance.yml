@@ -18,6 +18,9 @@ on:
       continuity_at:
         type: string
         default: '0'
+      server_event_at:
+        type: string
+        default: '0'
 jobs:
   windows-tun:
     if: github.event_name == 'push' || inputs.target != 'android'
@@ -100,7 +103,7 @@ jobs:
         run: '& ./source/client/ops/windows-lab/test-network-cache.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-cache.json"'
       - name: Verify native paths and Auto using actual Wintun traffic
         shell: pwsh
-        run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults -FaultsOnly:([string]''${{ inputs.faults_only }}'' -eq ''true'') -ContinuityAt ([long]''0${{ inputs.continuity_at }}'')'
+        run: '& ./source/client/ops/windows-lab/test-network-pilot.ps1 -Fixture "$PWD/fixtures/windows.json" -Output "$PWD/receipts/windows-native-tun.json" -RequireAdGuard -Faults -FaultsOnly:([string]''${{ inputs.faults_only }}'' -eq ''true'') -ContinuityAt ([long]''0${{ inputs.continuity_at }}'') -ServerEventAt ([long]''0${{ inputs.server_event_at }}'')'
       - name: Preserve safe Windows evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -206,6 +209,7 @@ jobs:
           arguments=()
           if test '${{ inputs.faults_only }}' = true; then arguments+=(--faults-only); fi
           if test -n '${{ inputs.continuity_at }}' && test '${{ inputs.continuity_at }}' != 0; then arguments+=(--continuity-at '${{ inputs.continuity_at }}'); fi
+          if test -n '${{ inputs.server_event_at }}' && test '${{ inputs.server_event_at }}' != 0; then arguments+=(--server-event-at '${{ inputs.server_event_at }}'); fi
           python3 source/client/ops/android_lab/network_pilot_faults.py --adb "$ANDROID_HOME/platform-tools/adb" --output receipts/android-instrumentation.log "${arguments[@]}"
       - name: Preserve safe Android evidence
         if: always()
