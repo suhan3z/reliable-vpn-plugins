@@ -1,0 +1,423 @@
+{
+  "generation": 3,
+  "checked_at": "2026-10-25",
+  "selection": "200 popular Russian websites selected by service importance and public popularity lists; not a measured ranking or 200 proven VPN blocks.",
+  "ranking_sources": [
+    "https://www.semrush.com/trending-websites/ru/all",
+    "https://www.similarweb.com/top-websites/russian-federation/"
+  ],
+  "community_reference": {
+    "repository": "v2fly/domain-list-community",
+    "revision": "664598567e92d797bea11bb83cf939d1f37e9512",
+    "license": "MIT"
+  },
+  "vpn_guidance": {
+    "tbank.ru": {
+      "source": "https://www.tbank.ru/bank/help/interfaces/online-banking/start/enter/",
+      "reason": "Официальная справка рекомендует отключить VPN при проблемах с кодом входа; универсальная блокировка не утверждается."
+    },
+    "alfabank.ru": {
+      "source": "https://alfabank.ru/help/t/retail/oshibki/ne-poluchilos-zaiti-v-prilozhenie/ne-poluchilos-zaiti-v-prilozhenie/vidite-nadpis-otsutstvuet-podklyuchenie-k-seti-proverte-setevoe-soedinenie-ne-poluchilos-voiti-ili-belii-ekran/",
+      "reason": "Официальная справка рекомендует отключить VPN/прокси при ошибках входа; за границей упоминается российский IP."
+    },
+    "rustore.ru": {
+      "source": "https://www.rustore.ru/help/users/purchases-and-returns/link-bank-card",
+      "reason": "Официальная справка рекомендует отключить VPN при привязке банковской карты; это не утверждение о блокировке всего сервиса."
+    }
+  },
+  "dependencies": {
+    "sber.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/sberbank#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "sbrf.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/sberbank#L6",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "tinkoff.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L93",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "t-static.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L76",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "cdn-tinkoff.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L17",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "securepay.tinkoff.ru": {
+      "source": "https://www.tbank.ru/kassa/dev/payments/",
+      "checked_at": "2026-10-10",
+      "subdomains": false
+    },
+    "alfa.me": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vtb.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L144",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vtbbo.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L146",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "gpb.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L40",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "psb.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L85",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "scb.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L108",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "halvacard.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L104",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "mtsdengi.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mts-ru#L14",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "ozoncard.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L26",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "yandex-bank.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L46",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "wbpay.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L33",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "paywb.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L8",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "bcs-bank.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L18",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "robokassa.ru": {
+      "source": "https://robokassa.com/media/RK_connect_IP.pdf",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "gu-st.ru": {
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "nalog.ru": {
+      "source": "https://www.nalog.gov.ru/rn77/",
+      "checked_at": "2026-10-10",
+      "subdomains": true
+    },
+    "es.pfrf.ru": {
+      "source": "https://sfr.gov.ru/",
+      "checked_at": "2026-10-10",
+      "subdomains": true
+    },
+    "emias.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-medicine-ru#L7",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "ozone.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L29",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "ozonusercontent.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L41",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "o3.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L2",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "wb.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L24",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "wbbasket.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L27",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "wbstatic.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L36",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "wbcontent.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L28",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "yandex.market": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L72",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "beru.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L10",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "avito.st": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/avito#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "leroymerlin.ru": {
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "dodopizza.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-retail-ru#L32",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "dodostatic.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-retail-ru#L34",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "mobileapp.russianpost.ru": {
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "rzd-bonus.ru": {
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "avs.io": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/aviasales#L1",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "yandex.travel": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L87",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "yandex.taxi": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L83",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "kp.yandex.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/kinopoisk#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "kinopoisk-ru.clstorage.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/kinopoisk#L2",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "ivicdn.tv": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-entertainment-ru#L18",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "okkoapi.tv": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/okko#L1",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "okko.sport": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/okko#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "more.tv": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wink#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "rtbcdn.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rutube#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "rutubelist.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rutube#L2",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "ya.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L43",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "yandex.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L55",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vk.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L7",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vk.me": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L53",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "userapi.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L31",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vkuseraudio.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L44",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "vkuservideo.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L49",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "odnoklassniki.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ok#L11",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "mycdn.me": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L116",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "bk.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L125",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "inbox.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L126",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "list.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L128",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "imgsmail.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L112",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "smailru.net": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L118",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "dzeninfra.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/dzen#L8",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "oneme.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L221",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "mymts.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mts-ru#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "mgfn.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/megafon#L5",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "tele2.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/t2-ru#L3",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "rostelecom.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rostelecom#L4",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "2gis.com": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/2gis#L6",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "hhcdn.ru": {
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/headhunter#L4",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "sbis.ru": {
+      "source": "https://saby.ru/news/about_sbis/01a158f2-ea40-7d0a-8e20-50e65d41305c",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    },
+    "pay.mironline.ru": {
+      "source": "https://nspk.ru/cards-mir/soft",
+      "checked_at": "2026-10-25",
+      "subdomains": true
+    }
+  },
+  "community_foreign_access_reports": [
+    "finance.ozon.ru",
+    "reso.ru",
+    "gosuslugi.ru",
+    "nalog.gov.ru",
+    "sfr.gov.ru",
+    "rosreestr.gov.ru",
+    "fssp.gov.ru",
+    "mos.ru",
+    "mosreg.ru",
+    "dom.gosuslugi.ru",
+    "roszdravnadzor.gov.ru",
+    "ozon.ru",
+    "lemanapro.ru",
+    "magnit.ru",
+    "pochta.ru",
+    "rzd.ru",
+    "emex.ru",
+    "kinopoisk.ru",
+    "yandex.ru",
+    "consultant.ru"
+  ],
+  "community_foreign_access_source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst"
+}

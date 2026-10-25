@@ -1,0 +1,201 @@
+# category|service|primary domain|additional domains (space separated)
+banks|Сбербанк|sberbank.ru|sber.ru sbrf.ru
+banks|Т-Банк|tbank.ru|tinkoff.ru t-static.ru cdn-tinkoff.ru securepay.tinkoff.ru
+banks|Альфа-Банк|alfabank.ru|alfa.me
+banks|ВТБ|vtb.ru|vtb.com vtbbo.ru
+banks|Газпромбанк|gazprombank.ru|gpb.ru
+banks|Россельхозбанк|rshb.ru|
+banks|ПСБ|psbank.ru|psb.ru
+banks|Совкомбанк|sovcombank.ru|scb.ru halvacard.ru
+banks|Московский кредитный банк|mkb.ru|
+banks|Райффайзенбанк|raiffeisen.ru|
+banks|Уралсиб|uralsib.ru|
+banks|Ак Барс Банк|akbars.ru|
+banks|Банк Санкт-Петербург|bspb.ru|
+banks|ОТП Банк|otpbank.ru|
+banks|УБРиР|ubrr.ru|
+banks|Авангард|avangard.ru|
+banks|Банк Зенит|zenit.ru|
+banks|Ренессанс Банк|rencredit.ru|
+banks|МТС Банк|mtsbank.ru|mtsdengi.ru
+banks|Ozon Банк|finance.ozon.ru|ozoncard.ru
+banks|Яндекс Банк|bank.yandex.ru|yandex-bank.net
+banks|Вайлдберриз Банк|wb-bank.ru|wbpay.ru paywb.ru
+banks|Точка|tochka.com|
+banks|Модульбанк|modulbank.ru|
+banks|БКС|bcs.ru|bcs-bank.ru
+banks|Финам|finam.ru|
+banks|Московская биржа|moex.com|
+banks|Национальная система платежных карт|nspk.ru|
+banks|Платежная система Мир|vamprivet.ru|pay.mironline.ru
+banks|ЮMoney|yoomoney.ru|
+banks|ЮKassa|yookassa.ru|
+banks|CloudPayments|cloudpayments.ru|
+banks|Robokassa|robokassa.com|robokassa.ru
+banks|PayKeeper|paykeeper.ru|
+banks|Банки.ру|banki.ru|
+banks|Ингосстрах|ingos.ru|
+banks|РЕСО-Гарантия|reso.ru|
+banks|АльфаСтрахование|alfastrah.ru|
+banks|СОГАЗ|sogaz.ru|
+banks|Росгосстрах|rgs.ru|
+government|Госуслуги и ЕСИА|gosuslugi.ru|gu-st.ru
+government|ФНС|nalog.gov.ru|nalog.ru
+government|Социальный фонд России|sfr.gov.ru|es.pfrf.ru
+government|Росреестр|rosreestr.gov.ru|
+government|ФССП|fssp.gov.ru|
+government|МВД|мвд.рф|
+government|Госавтоинспекция|госавтоинспекция.рф|
+government|Госуслуги Москвы|mos.ru|
+government|Госуслуги Московской области|mosreg.ru|
+government|Госуслуги Санкт-Петербурга|gu.spb.ru|
+government|Госуслуги Татарстана|uslugi.tatarstan.ru|
+government|ЕМИАС|emias.info|emias.ru
+government|ЕГИССО|egisso.ru|
+government|ГАС Правосудие|sudrf.ru|
+government|Арбитражные суды|arbitr.ru|
+government|ГИС ЖКХ|dom.gosuslugi.ru|
+government|Центральный банк России|cbr.ru|
+government|Работа России|trudvsem.ru|
+government|Онлайнинспекция|онлайнинспекция.рф|
+government|Роспотребнадзор|rospotrebnadzor.ru|
+government|Росздравнадзор|roszdravnadzor.gov.ru|
+government|Госключ|goskey.ru|
+government|Честный ЗНАК|честныйзнак.рф|
+government|Российская электронная школа|resh.edu.ru|
+government|Федеральная нотариальная палата|notariat.ru|
+shopping|Ozon|ozon.ru|ozone.ru ozonusercontent.com o3.ru
+shopping|Wildberries|wildberries.ru|wb.ru wbbasket.ru wbstatic.net wbcontent.net
+shopping|Яндекс Маркет|market.yandex.ru|yandex.market beru.ru
+shopping|Авито|avito.ru|avito.st
+shopping|Мегамаркет|megamarket.ru|
+shopping|AliExpress Россия|aliexpress.ru|
+shopping|DNS|dns-shop.ru|
+shopping|Ситилинк|citilink.ru|
+shopping|М.Видео|mvideo.ru|
+shopping|Эльдорадо|eldorado.ru|
+shopping|Лемана ПРО|lemanapro.ru|leroymerlin.ru
+shopping|ВсеИнструменты.ру|vseinstrumenti.ru|
+shopping|Ламода|lamoda.ru|
+shopping|Детский мир|detmir.ru|
+shopping|Спортмастер|sportmaster.ru|
+shopping|Золотое Яблоко|goldapple.ru|
+shopping|ЛЭТУАЛЬ|letu.ru|
+shopping|РИВ ГОШ|rivegauche.ru|
+shopping|Читай-город|chitai-gorod.ru|
+shopping|Лабиринт|labirint.ru|
+shopping|Комус|komus.ru|
+shopping|Петрович|petrovich.ru|
+shopping|Hoff|hoff.ru|
+shopping|Столплит|stolplit.ru|
+shopping|Лента|lenta.com|
+shopping|Магнит|magnit.ru|
+shopping|Пятёрочка|5ka.ru|
+shopping|Перекрёсток|perekrestok.ru|
+shopping|ВкусВилл|vkusvill.ru|
+shopping|Ашан|auchan.ru|
+shopping|METRO|metro-cc.ru|
+shopping|Самокат|samokat.ru|
+shopping|Купер|kuper.ru|
+shopping|Яндекс Еда|eda.yandex.ru|
+shopping|Яндекс Лавка|lavka.yandex.ru|
+shopping|Додо Пицца|dodopizza.ru|dodopizza.com dodostatic.net
+shopping|Вкусно — и точка|vkusnoitochka.ru|
+shopping|Rostic’s|rostics.ru|
+shopping|Бургер Кинг|burgerkingrus.ru|
+shopping|Тануки|tanuki.ru|
+shopping|Почта России|pochta.ru|mobileapp.russianpost.ru
+shopping|СДЭК|cdek.ru|
+shopping|Boxberry|boxberry.ru|
+shopping|Деловые Линии|dellin.ru|
+shopping|ПЭК|pecom.ru|
+shopping|РЖД|rzd.ru|rzd-bonus.ru
+shopping|Туту|tutu.ru|
+shopping|Аэрофлот|aeroflot.ru|
+shopping|Победа|pobeda.aero|
+shopping|S7 Airlines|s7.ru|
+shopping|Уральские авиалинии|uralairlines.ru|
+shopping|ЮТэйр|utair.ru|
+shopping|Aviasales|aviasales.ru|avs.io
+shopping|Островок|ostrovok.ru|
+shopping|Яндекс Путешествия|travel.yandex.ru|yandex.travel
+shopping|Ozon Travel|ozon.travel|
+shopping|Суточно.ру|sutochno.ru|
+shopping|Отелло|otello.ru|
+shopping|ЦИАН|cian.ru|
+shopping|Домклик|domclick.ru|
+shopping|Авто.ру|auto.ru|
+shopping|Дром|drom.ru|
+shopping|Экзист|exist.ru|
+shopping|Emex|emex.ru|
+shopping|Аптека.ру|apteka.ru|
+shopping|ЕАПТЕКА|eapteka.ru|
+shopping|Здравсити|zdravcity.ru|
+shopping|Горздрав|gorzdrav.org|
+shopping|Столички|stolichki.ru|
+shopping|Планета Здоровья|planetazdorovo.ru|
+shopping|ИНВИТРО|invitro.ru|
+shopping|Гемотест|gemotest.ru|
+shopping|Хеликс|helix.ru|
+shopping|МЕДСИ|medsi.ru|
+shopping|СМ-Клиника|smclinic.ru|
+shopping|ПроДокторов|prodoctorov.ru|
+shopping|СберЗдоровье|sberhealth.ru|
+shopping|Яндекс Такси|taxi.yandex.ru|yandex.taxi
+shopping|Ситимобил|city-mobil.ru|
+shopping|Делимобиль|delimobil.ru|
+media|Кинопоиск|kinopoisk.ru|kp.yandex.net kinopoisk-ru.clstorage.net
+media|Иви|ivi.ru|ivicdn.tv
+media|Okko|okko.tv|okkoapi.tv okko.sport
+media|Wink|wink.ru|more.tv
+media|KION|kion.ru|
+media|START|start.ru|
+media|PREMIER|premier.one|
+media|Амедиатека|amediateka.ru|
+media|RUTUBE|rutube.ru|rtbcdn.ru rutubelist.ru
+media|VK Видео|vkvideo.ru|
+media|Яндекс Музыка|music.yandex.ru|
+media|VK Музыка|music.vk.com|
+media|Звук|zvuk.com|
+media|ЛитРес|litres.ru|
+media|РБК|rbc.ru|
+media|РИА Новости|ria.ru|
+media|ТАСС|tass.ru|
+media|Коммерсантъ|kommersant.ru|
+media|Ведомости|vedomosti.ru|
+media|Лента.ру|lenta.ru|
+media|Газета.ру|gazeta.ru|
+media|Комсомольская правда|kp.ru|
+media|Sports.ru|sports.ru|
+media|Чемпионат|championat.com|
+media|Рамблер|rambler.ru|
+ecosystems|Яндекс|yandex.ru|ya.ru yandex.com
+ecosystems|ВКонтакте|vk.com|vk.ru vk.me userapi.com vkuseraudio.net vkuservideo.net
+ecosystems|Одноклассники|ok.ru|odnoklassniki.ru mycdn.me
+ecosystems|Mail|mail.ru|bk.ru inbox.ru list.ru imgsmail.ru smailru.net
+ecosystems|Дзен|dzen.ru|dzeninfra.ru
+ecosystems|MAX|max.ru|oneme.ru
+ecosystems|МТС|mts.ru|mymts.ru
+ecosystems|МегаФон|megafon.ru|mgfn.ru
+ecosystems|Билайн|beeline.ru|
+ecosystems|Т2|t2.ru|tele2.ru
+ecosystems|Yota|yota.ru|
+ecosystems|Ростелеком|rt.ru|rostelecom.ru
+ecosystems|Дом.ру|dom.ru|
+ecosystems|2ГИС|2gis.ru|2gis.com
+ecosystems|Яндекс Карты|maps.yandex.ru|
+ecosystems|Гисметео|gismeteo.ru|
+ecosystems|Яндекс Погода|pogoda.yandex.ru|
+ecosystems|HeadHunter|hh.ru|hhcdn.ru
+ecosystems|Работа.ру|rabota.ru|
+ecosystems|SuperJob|superjob.ru|
+ecosystems|КонсультантПлюс|consultant.ru|
+ecosystems|Гарант|garant.ru|
+ecosystems|Контур|kontur.ru|
+ecosystems|СБИС / Saby|saby.ru|sbis.ru
+ecosystems|RuStore|rustore.ru|
+ecosystems|1С|1c.ru|
+ecosystems|МойСклад|moysklad.ru|
+ecosystems|Учи.ру|uchi.ru|
+ecosystems|Дневник.ру|dnevnik.ru|
+ecosystems|Сферум|sferum.ru|

@@ -1,40 +1,2506 @@
 {
   "version": 1,
-  "generation": 2,
+  "generation": 3,
   "expires_at": 0,
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-25",
   "categories": [
-    {"id":"banks","title":"Банки и платежи","default_enabled":true},
-    {"id":"government","title":"Госуслуги","default_enabled":true},
-    {"id":"shopping","title":"Магазины и доставка","default_enabled":false},
-    {"id":"media","title":"Медиа","default_enabled":false},
-    {"id":"ecosystems","title":"Социальные сети и экосистемы","default_enabled":false}
+    {
+      "id": "banks",
+      "title": "Банки, платежи и страхование",
+      "default_enabled": true
+    },
+    {
+      "id": "government",
+      "title": "Госуслуги",
+      "default_enabled": true
+    },
+    {
+      "id": "shopping",
+      "title": "Покупки, услуги и поездки",
+      "default_enabled": false
+    },
+    {
+      "id": "media",
+      "title": "Медиа",
+      "default_enabled": false
+    },
+    {
+      "id": "ecosystems",
+      "title": "Связь, социальные сети и сервисы",
+      "default_enabled": false
+    }
   ],
-  "zones": ["ru", "xn--p1ai", "su"],
+  "zones": [
+    "ru",
+    "xn--p1ai",
+    "su"
+  ],
   "entries": [
-    {"domain":"sberbank.ru","subdomains":true,"service":"Сбербанк","category":"banks","source":"https://cms-res-web.online.sberbank.ru/uniagreement/oferta.pdf","reason":"Прямой доступ к банку и Сбербанк Онлайн; наличие ограничений VPN не подтверждено для всех сетей.","checked_at":"2026-10-10"},
-    {"domain":"tbank.ru","subdomains":true,"service":"Т-Банк","category":"banks","source":"https://www.tbank.ru/help/","reason":"Прямой доступ к банку, входу и платежам; совместимость зависит от сети.","checked_at":"2026-10-10"},
-    {"domain":"securepay.tinkoff.ru","subdomains":false,"service":"Платежи Т-Банка","category":"banks","source":"https://www.tbank.ru/kassa/dev/payments/","reason":"Официальная документация эквайринга указывает securepay.tinkoff.ru для API и платежных форм. Добавлена конкретная зависимость, без всего tinkoff.ru.","checked_at":"2026-10-10"},
-    {"domain":"alfabank.ru","subdomains":true,"service":"Альфа-Банк","category":"banks","source":"https://alfabank.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
-    {"domain":"vtb.ru","subdomains":true,"service":"ВТБ","category":"banks","source":"https://www.vtb.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
-    {"domain":"gazprombank.ru","subdomains":true,"service":"Газпромбанк","category":"banks","source":"https://www.gazprombank.ru/","reason":"Прямой доступ к банковским сервисам; совместимость зависит от сети.","checked_at":"2026-10-10"},
-    {"domain":"yookassa.ru","subdomains":true,"service":"ЮKassa","category":"banks","source":"https://yookassa.ru/developers/using-api/interaction-format","reason":"Платежные API и формы ЮKassa, которые используются другими сайтами.","checked_at":"2026-10-10"},
-    {"domain":"yoomoney.ru","subdomains":true,"service":"ЮMoney","category":"banks","source":"https://yoomoney.ru/","reason":"Кошелек и платежные формы; совместимость зависит от сети.","checked_at":"2026-10-10"},
-    {"domain":"gosuslugi.ru","subdomains":true,"service":"Госуслуги и ЕСИА","category":"government","source":"https://www.gosuslugi.ru/","reason":"Госуслуги и вход через ЕСИА на поддоменах gosuslugi.ru.","checked_at":"2026-10-10"},
-    {"domain":"nalog.gov.ru","subdomains":true,"service":"ФНС","category":"government","source":"https://www.nalog.gov.ru/rn77/","reason":"Официальный портал ФНС.","checked_at":"2026-10-10"},
-    {"domain":"nalog.ru","subdomains":true,"service":"Личные кабинеты ФНС","category":"government","source":"https://www.nalog.gov.ru/rn77/","reason":"Официальный портал ссылается на lkfl2.nalog.ru, lkip2.nalog.ru и service.nalog.ru.","checked_at":"2026-10-10"},
-    {"domain":"sfr.gov.ru","subdomains":true,"service":"Социальный фонд России","category":"government","source":"https://sfr.gov.ru/","reason":"Портал СФР и его электронные сервисы.","checked_at":"2026-10-10"},
-    {"domain":"es.pfrf.ru","subdomains":true,"service":"Электронные сервисы СФР","category":"government","source":"https://sfr.gov.ru/","reason":"Официальный портал СФР ссылается на es.pfrf.ru для получения СНИЛС.","checked_at":"2026-10-10"},
-    {"domain":"rosreestr.gov.ru","subdomains":true,"service":"Росреестр","category":"government","source":"https://rosreestr.gov.ru/","reason":"Портал Росреестра и личный кабинет.","checked_at":"2026-10-10"},
-    {"domain":"ozon.ru","subdomains":true,"service":"Ozon","category":"shopping","source":"https://www.ozon.ru/","reason":"Магазин и личный кабинет; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"wildberries.ru","subdomains":true,"service":"Wildberries","category":"shopping","source":"https://www.wildberries.ru/","reason":"Магазин и личный кабинет; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"pochta.ru","subdomains":true,"service":"Почта России","category":"shopping","source":"https://www.pochta.ru/","reason":"Отслеживание и доставка; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"cdek.ru","subdomains":true,"service":"СДЭК","category":"shopping","source":"https://www.cdek.ru/ru/","reason":"Отслеживание и доставка; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"rbc.ru","subdomains":true,"service":"РБК","category":"media","source":"https://www.rbc.ru/","reason":"Медиасервис; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"rutube.ru","subdomains":true,"service":"RUTUBE","category":"media","source":"https://rutube.ru/","reason":"Видеосервис; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"kinopoisk.ru","subdomains":true,"service":"Кинопоиск","category":"media","source":"https://www.kinopoisk.ru/","reason":"Медиасервис с региональным контентом; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"vk.com","subdomains":true,"service":"ВКонтакте","category":"ecosystems","source":"https://vk.com/","reason":"Социальная сеть; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"yandex.ru","subdomains":true,"service":"Яндекс","category":"ecosystems","source":"https://yandex.ru/","reason":"Сервисы Яндекса, включая паспорт; категория включается пользователем.","checked_at":"2026-10-10"},
-    {"domain":"mail.ru","subdomains":true,"service":"Mail","category":"ecosystems","source":"https://mail.ru/","reason":"Почта и вход через account.mail.ru; категория включается пользователем.","checked_at":"2026-10-10"}
+    {
+      "domain": "sberbank.ru",
+      "subdomains": true,
+      "service": "Сбербанк",
+      "category": "banks",
+      "source": "https://sberbank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sber.ru",
+      "subdomains": true,
+      "service": "Сбербанк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/sberbank#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sbrf.ru",
+      "subdomains": true,
+      "service": "Сбербанк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/sberbank#L6",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tbank.ru",
+      "subdomains": true,
+      "service": "Т-Банк",
+      "category": "banks",
+      "source": "https://www.tbank.ru/bank/help/interfaces/online-banking/start/enter/",
+      "reason": "Официальная справка рекомендует отключить VPN при проблемах с кодом входа; универсальная блокировка не утверждается.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tinkoff.ru",
+      "subdomains": true,
+      "service": "Т-Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L93",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "t-static.ru",
+      "subdomains": true,
+      "service": "Т-Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L76",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "cdn-tinkoff.ru",
+      "subdomains": true,
+      "service": "Т-Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/tbank-ru#L17",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "securepay.tinkoff.ru",
+      "subdomains": false,
+      "service": "Т-Банк",
+      "category": "banks",
+      "source": "https://www.tbank.ru/kassa/dev/payments/",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-10"
+    },
+    {
+      "domain": "alfabank.ru",
+      "subdomains": true,
+      "service": "Альфа-Банк",
+      "category": "banks",
+      "source": "https://alfabank.ru/help/t/retail/oshibki/ne-poluchilos-zaiti-v-prilozhenie/ne-poluchilos-zaiti-v-prilozhenie/vidite-nadpis-otsutstvuet-podklyuchenie-k-seti-proverte-setevoe-soedinenie-ne-poluchilos-voiti-ili-belii-ekran/",
+      "reason": "Официальная справка рекомендует отключить VPN/прокси при ошибках входа; за границей упоминается российский IP.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "alfa.me",
+      "subdomains": true,
+      "service": "Альфа-Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vtb.ru",
+      "subdomains": true,
+      "service": "ВТБ",
+      "category": "banks",
+      "source": "https://vtb.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vtb.com",
+      "subdomains": true,
+      "service": "ВТБ",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L144",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vtbbo.ru",
+      "subdomains": true,
+      "service": "ВТБ",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L146",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gazprombank.ru",
+      "subdomains": true,
+      "service": "Газпромбанк",
+      "category": "banks",
+      "source": "https://gazprombank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gpb.ru",
+      "subdomains": true,
+      "service": "Газпромбанк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L40",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rshb.ru",
+      "subdomains": true,
+      "service": "Россельхозбанк",
+      "category": "banks",
+      "source": "https://rshb.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "psbank.ru",
+      "subdomains": true,
+      "service": "ПСБ",
+      "category": "banks",
+      "source": "https://psbank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "psb.ru",
+      "subdomains": true,
+      "service": "ПСБ",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L85",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sovcombank.ru",
+      "subdomains": true,
+      "service": "Совкомбанк",
+      "category": "banks",
+      "source": "https://sovcombank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "scb.ru",
+      "subdomains": true,
+      "service": "Совкомбанк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L108",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "halvacard.ru",
+      "subdomains": true,
+      "service": "Совкомбанк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L104",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mkb.ru",
+      "subdomains": true,
+      "service": "Московский кредитный банк",
+      "category": "banks",
+      "source": "https://mkb.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "raiffeisen.ru",
+      "subdomains": true,
+      "service": "Райффайзенбанк",
+      "category": "banks",
+      "source": "https://raiffeisen.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "uralsib.ru",
+      "subdomains": true,
+      "service": "Уралсиб",
+      "category": "banks",
+      "source": "https://uralsib.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "akbars.ru",
+      "subdomains": true,
+      "service": "Ак Барс Банк",
+      "category": "banks",
+      "source": "https://akbars.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "bspb.ru",
+      "subdomains": true,
+      "service": "Банк Санкт-Петербург",
+      "category": "banks",
+      "source": "https://bspb.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "otpbank.ru",
+      "subdomains": true,
+      "service": "ОТП Банк",
+      "category": "banks",
+      "source": "https://otpbank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ubrr.ru",
+      "subdomains": true,
+      "service": "УБРиР",
+      "category": "banks",
+      "source": "https://ubrr.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "avangard.ru",
+      "subdomains": true,
+      "service": "Авангард",
+      "category": "banks",
+      "source": "https://avangard.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "zenit.ru",
+      "subdomains": true,
+      "service": "Банк Зенит",
+      "category": "banks",
+      "source": "https://zenit.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rencredit.ru",
+      "subdomains": true,
+      "service": "Ренессанс Банк",
+      "category": "banks",
+      "source": "https://rencredit.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mtsbank.ru",
+      "subdomains": true,
+      "service": "МТС Банк",
+      "category": "banks",
+      "source": "https://mtsbank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mtsdengi.ru",
+      "subdomains": true,
+      "service": "МТС Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mts-ru#L14",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "finance.ozon.ru",
+      "subdomains": true,
+      "service": "Ozon Банк",
+      "category": "banks",
+      "source": "https://finance.ozon.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ozoncard.ru",
+      "subdomains": true,
+      "service": "Ozon Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L26",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "bank.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Банк",
+      "category": "banks",
+      "source": "https://bank.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex-bank.net",
+      "subdomains": true,
+      "service": "Яндекс Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L46",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wb-bank.ru",
+      "subdomains": true,
+      "service": "Вайлдберриз Банк",
+      "category": "banks",
+      "source": "https://wb-bank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wbpay.ru",
+      "subdomains": true,
+      "service": "Вайлдберриз Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L33",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "paywb.ru",
+      "subdomains": true,
+      "service": "Вайлдберриз Банк",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L8",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tochka.com",
+      "subdomains": true,
+      "service": "Точка",
+      "category": "banks",
+      "source": "https://tochka.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "modulbank.ru",
+      "subdomains": true,
+      "service": "Модульбанк",
+      "category": "banks",
+      "source": "https://modulbank.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "bcs.ru",
+      "subdomains": true,
+      "service": "БКС",
+      "category": "banks",
+      "source": "https://bcs.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "bcs-bank.ru",
+      "subdomains": true,
+      "service": "БКС",
+      "category": "banks",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-bank-ru#L18",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "finam.ru",
+      "subdomains": true,
+      "service": "Финам",
+      "category": "banks",
+      "source": "https://finam.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "moex.com",
+      "subdomains": true,
+      "service": "Московская биржа",
+      "category": "banks",
+      "source": "https://moex.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "nspk.ru",
+      "subdomains": true,
+      "service": "Национальная система платежных карт",
+      "category": "banks",
+      "source": "https://nspk.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vamprivet.ru",
+      "subdomains": true,
+      "service": "Платежная система Мир",
+      "category": "banks",
+      "source": "https://vamprivet.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "pay.mironline.ru",
+      "subdomains": true,
+      "service": "Платежная система Мир",
+      "category": "banks",
+      "source": "https://nspk.ru/cards-mir/soft",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yoomoney.ru",
+      "subdomains": true,
+      "service": "ЮMoney",
+      "category": "banks",
+      "source": "https://yoomoney.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yookassa.ru",
+      "subdomains": true,
+      "service": "ЮKassa",
+      "category": "banks",
+      "source": "https://yookassa.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "cloudpayments.ru",
+      "subdomains": true,
+      "service": "CloudPayments",
+      "category": "banks",
+      "source": "https://cloudpayments.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "robokassa.com",
+      "subdomains": true,
+      "service": "Robokassa",
+      "category": "banks",
+      "source": "https://robokassa.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "robokassa.ru",
+      "subdomains": true,
+      "service": "Robokassa",
+      "category": "banks",
+      "source": "https://robokassa.com/media/RK_connect_IP.pdf",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "paykeeper.ru",
+      "subdomains": true,
+      "service": "PayKeeper",
+      "category": "banks",
+      "source": "https://paykeeper.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "banki.ru",
+      "subdomains": true,
+      "service": "Банки.ру",
+      "category": "banks",
+      "source": "https://banki.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ingos.ru",
+      "subdomains": true,
+      "service": "Ингосстрах",
+      "category": "banks",
+      "source": "https://ingos.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "reso.ru",
+      "subdomains": true,
+      "service": "РЕСО-Гарантия",
+      "category": "banks",
+      "source": "https://reso.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "alfastrah.ru",
+      "subdomains": true,
+      "service": "АльфаСтрахование",
+      "category": "banks",
+      "source": "https://alfastrah.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sogaz.ru",
+      "subdomains": true,
+      "service": "СОГАЗ",
+      "category": "banks",
+      "source": "https://sogaz.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rgs.ru",
+      "subdomains": true,
+      "service": "Росгосстрах",
+      "category": "banks",
+      "source": "https://rgs.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gosuslugi.ru",
+      "subdomains": true,
+      "service": "Госуслуги и ЕСИА",
+      "category": "government",
+      "source": "https://gosuslugi.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gu-st.ru",
+      "subdomains": true,
+      "service": "Госуслуги и ЕСИА",
+      "category": "government",
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "nalog.gov.ru",
+      "subdomains": true,
+      "service": "ФНС",
+      "category": "government",
+      "source": "https://nalog.gov.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "nalog.ru",
+      "subdomains": true,
+      "service": "ФНС",
+      "category": "government",
+      "source": "https://www.nalog.gov.ru/rn77/",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-10"
+    },
+    {
+      "domain": "sfr.gov.ru",
+      "subdomains": true,
+      "service": "Социальный фонд России",
+      "category": "government",
+      "source": "https://sfr.gov.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "es.pfrf.ru",
+      "subdomains": true,
+      "service": "Социальный фонд России",
+      "category": "government",
+      "source": "https://sfr.gov.ru/",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-10"
+    },
+    {
+      "domain": "rosreestr.gov.ru",
+      "subdomains": true,
+      "service": "Росреестр",
+      "category": "government",
+      "source": "https://rosreestr.gov.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "fssp.gov.ru",
+      "subdomains": true,
+      "service": "ФССП",
+      "category": "government",
+      "source": "https://fssp.gov.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "xn--b1aew.xn--p1ai",
+      "subdomains": true,
+      "service": "МВД",
+      "category": "government",
+      "source": "https://xn--b1aew.xn--p1ai/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "xn--80aebkobnwfcnsfk1e0h.xn--p1ai",
+      "subdomains": true,
+      "service": "Госавтоинспекция",
+      "category": "government",
+      "source": "https://xn--80aebkobnwfcnsfk1e0h.xn--p1ai/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mos.ru",
+      "subdomains": true,
+      "service": "Госуслуги Москвы",
+      "category": "government",
+      "source": "https://mos.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mosreg.ru",
+      "subdomains": true,
+      "service": "Госуслуги Московской области",
+      "category": "government",
+      "source": "https://mosreg.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gu.spb.ru",
+      "subdomains": true,
+      "service": "Госуслуги Санкт-Петербурга",
+      "category": "government",
+      "source": "https://gu.spb.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "uslugi.tatarstan.ru",
+      "subdomains": true,
+      "service": "Госуслуги Татарстана",
+      "category": "government",
+      "source": "https://uslugi.tatarstan.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "emias.info",
+      "subdomains": true,
+      "service": "ЕМИАС",
+      "category": "government",
+      "source": "https://emias.info/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "emias.ru",
+      "subdomains": true,
+      "service": "ЕМИАС",
+      "category": "government",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-medicine-ru#L7",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "egisso.ru",
+      "subdomains": true,
+      "service": "ЕГИССО",
+      "category": "government",
+      "source": "https://egisso.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sudrf.ru",
+      "subdomains": true,
+      "service": "ГАС Правосудие",
+      "category": "government",
+      "source": "https://sudrf.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "arbitr.ru",
+      "subdomains": true,
+      "service": "Арбитражные суды",
+      "category": "government",
+      "source": "https://arbitr.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dom.gosuslugi.ru",
+      "subdomains": true,
+      "service": "ГИС ЖКХ",
+      "category": "government",
+      "source": "https://dom.gosuslugi.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "cbr.ru",
+      "subdomains": true,
+      "service": "Центральный банк России",
+      "category": "government",
+      "source": "https://cbr.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "trudvsem.ru",
+      "subdomains": true,
+      "service": "Работа России",
+      "category": "government",
+      "source": "https://trudvsem.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "xn--80akibcicpdbetz7e2g.xn--p1ai",
+      "subdomains": true,
+      "service": "Онлайнинспекция",
+      "category": "government",
+      "source": "https://xn--80akibcicpdbetz7e2g.xn--p1ai/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rospotrebnadzor.ru",
+      "subdomains": true,
+      "service": "Роспотребнадзор",
+      "category": "government",
+      "source": "https://rospotrebnadzor.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "roszdravnadzor.gov.ru",
+      "subdomains": true,
+      "service": "Росздравнадзор",
+      "category": "government",
+      "source": "https://roszdravnadzor.gov.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "goskey.ru",
+      "subdomains": true,
+      "service": "Госключ",
+      "category": "government",
+      "source": "https://goskey.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "xn--80ajghhoc2aj1c8b.xn--p1ai",
+      "subdomains": true,
+      "service": "Честный ЗНАК",
+      "category": "government",
+      "source": "https://xn--80ajghhoc2aj1c8b.xn--p1ai/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "resh.edu.ru",
+      "subdomains": true,
+      "service": "Российская электронная школа",
+      "category": "government",
+      "source": "https://resh.edu.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "notariat.ru",
+      "subdomains": true,
+      "service": "Федеральная нотариальная палата",
+      "category": "government",
+      "source": "https://notariat.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ozon.ru",
+      "subdomains": true,
+      "service": "Ozon",
+      "category": "shopping",
+      "source": "https://ozon.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ozone.ru",
+      "subdomains": true,
+      "service": "Ozon",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L29",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ozonusercontent.com",
+      "subdomains": true,
+      "service": "Ozon",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L41",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "o3.ru",
+      "subdomains": true,
+      "service": "Ozon",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ozon#L2",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wildberries.ru",
+      "subdomains": true,
+      "service": "Wildberries",
+      "category": "shopping",
+      "source": "https://wildberries.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wb.ru",
+      "subdomains": true,
+      "service": "Wildberries",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L24",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wbbasket.ru",
+      "subdomains": true,
+      "service": "Wildberries",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L27",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wbstatic.net",
+      "subdomains": true,
+      "service": "Wildberries",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L36",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wbcontent.net",
+      "subdomains": true,
+      "service": "Wildberries",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wildberries#L28",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "market.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Маркет",
+      "category": "shopping",
+      "source": "https://market.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex.market",
+      "subdomains": true,
+      "service": "Яндекс Маркет",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L72",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "beru.ru",
+      "subdomains": true,
+      "service": "Яндекс Маркет",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L10",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "avito.ru",
+      "subdomains": true,
+      "service": "Авито",
+      "category": "shopping",
+      "source": "https://avito.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "avito.st",
+      "subdomains": true,
+      "service": "Авито",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/avito#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "megamarket.ru",
+      "subdomains": true,
+      "service": "Мегамаркет",
+      "category": "shopping",
+      "source": "https://megamarket.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "aliexpress.ru",
+      "subdomains": true,
+      "service": "AliExpress Россия",
+      "category": "shopping",
+      "source": "https://aliexpress.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dns-shop.ru",
+      "subdomains": true,
+      "service": "DNS",
+      "category": "shopping",
+      "source": "https://dns-shop.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "citilink.ru",
+      "subdomains": true,
+      "service": "Ситилинк",
+      "category": "shopping",
+      "source": "https://citilink.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mvideo.ru",
+      "subdomains": true,
+      "service": "М.Видео",
+      "category": "shopping",
+      "source": "https://mvideo.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "eldorado.ru",
+      "subdomains": true,
+      "service": "Эльдорадо",
+      "category": "shopping",
+      "source": "https://eldorado.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "lemanapro.ru",
+      "subdomains": true,
+      "service": "Лемана ПРО",
+      "category": "shopping",
+      "source": "https://lemanapro.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "leroymerlin.ru",
+      "subdomains": true,
+      "service": "Лемана ПРО",
+      "category": "shopping",
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vseinstrumenti.ru",
+      "subdomains": true,
+      "service": "ВсеИнструменты.ру",
+      "category": "shopping",
+      "source": "https://vseinstrumenti.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "lamoda.ru",
+      "subdomains": true,
+      "service": "Ламода",
+      "category": "shopping",
+      "source": "https://lamoda.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "detmir.ru",
+      "subdomains": true,
+      "service": "Детский мир",
+      "category": "shopping",
+      "source": "https://detmir.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sportmaster.ru",
+      "subdomains": true,
+      "service": "Спортмастер",
+      "category": "shopping",
+      "source": "https://sportmaster.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "goldapple.ru",
+      "subdomains": true,
+      "service": "Золотое Яблоко",
+      "category": "shopping",
+      "source": "https://goldapple.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "letu.ru",
+      "subdomains": true,
+      "service": "ЛЭТУАЛЬ",
+      "category": "shopping",
+      "source": "https://letu.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rivegauche.ru",
+      "subdomains": true,
+      "service": "РИВ ГОШ",
+      "category": "shopping",
+      "source": "https://rivegauche.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "chitai-gorod.ru",
+      "subdomains": true,
+      "service": "Читай-город",
+      "category": "shopping",
+      "source": "https://chitai-gorod.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "labirint.ru",
+      "subdomains": true,
+      "service": "Лабиринт",
+      "category": "shopping",
+      "source": "https://labirint.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "komus.ru",
+      "subdomains": true,
+      "service": "Комус",
+      "category": "shopping",
+      "source": "https://komus.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "petrovich.ru",
+      "subdomains": true,
+      "service": "Петрович",
+      "category": "shopping",
+      "source": "https://petrovich.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "hoff.ru",
+      "subdomains": true,
+      "service": "Hoff",
+      "category": "shopping",
+      "source": "https://hoff.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "stolplit.ru",
+      "subdomains": true,
+      "service": "Столплит",
+      "category": "shopping",
+      "source": "https://stolplit.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "lenta.com",
+      "subdomains": true,
+      "service": "Лента",
+      "category": "shopping",
+      "source": "https://lenta.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "magnit.ru",
+      "subdomains": true,
+      "service": "Магнит",
+      "category": "shopping",
+      "source": "https://magnit.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "5ka.ru",
+      "subdomains": true,
+      "service": "Пятёрочка",
+      "category": "shopping",
+      "source": "https://5ka.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "perekrestok.ru",
+      "subdomains": true,
+      "service": "Перекрёсток",
+      "category": "shopping",
+      "source": "https://perekrestok.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vkusvill.ru",
+      "subdomains": true,
+      "service": "ВкусВилл",
+      "category": "shopping",
+      "source": "https://vkusvill.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "auchan.ru",
+      "subdomains": true,
+      "service": "Ашан",
+      "category": "shopping",
+      "source": "https://auchan.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "metro-cc.ru",
+      "subdomains": true,
+      "service": "METRO",
+      "category": "shopping",
+      "source": "https://metro-cc.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "samokat.ru",
+      "subdomains": true,
+      "service": "Самокат",
+      "category": "shopping",
+      "source": "https://samokat.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kuper.ru",
+      "subdomains": true,
+      "service": "Купер",
+      "category": "shopping",
+      "source": "https://kuper.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "eda.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Еда",
+      "category": "shopping",
+      "source": "https://eda.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "lavka.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Лавка",
+      "category": "shopping",
+      "source": "https://lavka.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dodopizza.ru",
+      "subdomains": true,
+      "service": "Додо Пицца",
+      "category": "shopping",
+      "source": "https://dodopizza.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dodopizza.com",
+      "subdomains": true,
+      "service": "Додо Пицца",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-retail-ru#L32",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dodostatic.net",
+      "subdomains": true,
+      "service": "Додо Пицца",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-retail-ru#L34",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vkusnoitochka.ru",
+      "subdomains": true,
+      "service": "Вкусно — и точка",
+      "category": "shopping",
+      "source": "https://vkusnoitochka.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rostics.ru",
+      "subdomains": true,
+      "service": "Rostic’s",
+      "category": "shopping",
+      "source": "https://rostics.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "burgerkingrus.ru",
+      "subdomains": true,
+      "service": "Бургер Кинг",
+      "category": "shopping",
+      "source": "https://burgerkingrus.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tanuki.ru",
+      "subdomains": true,
+      "service": "Тануки",
+      "category": "shopping",
+      "source": "https://tanuki.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "pochta.ru",
+      "subdomains": true,
+      "service": "Почта России",
+      "category": "shopping",
+      "source": "https://pochta.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mobileapp.russianpost.ru",
+      "subdomains": true,
+      "service": "Почта России",
+      "category": "shopping",
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "cdek.ru",
+      "subdomains": true,
+      "service": "СДЭК",
+      "category": "shopping",
+      "source": "https://cdek.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "boxberry.ru",
+      "subdomains": true,
+      "service": "Boxberry",
+      "category": "shopping",
+      "source": "https://boxberry.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dellin.ru",
+      "subdomains": true,
+      "service": "Деловые Линии",
+      "category": "shopping",
+      "source": "https://dellin.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "pecom.ru",
+      "subdomains": true,
+      "service": "ПЭК",
+      "category": "shopping",
+      "source": "https://pecom.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rzd.ru",
+      "subdomains": true,
+      "service": "РЖД",
+      "category": "shopping",
+      "source": "https://rzd.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rzd-bonus.ru",
+      "subdomains": true,
+      "service": "РЖД",
+      "category": "shopping",
+      "source": "https://github.com/itdoginfo/allow-domains/blob/05b56dab6aa3ae2b49f29c87635c651969a0caa8/Russia/outside-raw.lst",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tutu.ru",
+      "subdomains": true,
+      "service": "Туту",
+      "category": "shopping",
+      "source": "https://tutu.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "aeroflot.ru",
+      "subdomains": true,
+      "service": "Аэрофлот",
+      "category": "shopping",
+      "source": "https://aeroflot.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "pobeda.aero",
+      "subdomains": true,
+      "service": "Победа",
+      "category": "shopping",
+      "source": "https://pobeda.aero/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "s7.ru",
+      "subdomains": true,
+      "service": "S7 Airlines",
+      "category": "shopping",
+      "source": "https://s7.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "uralairlines.ru",
+      "subdomains": true,
+      "service": "Уральские авиалинии",
+      "category": "shopping",
+      "source": "https://uralairlines.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "utair.ru",
+      "subdomains": true,
+      "service": "ЮТэйр",
+      "category": "shopping",
+      "source": "https://utair.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "aviasales.ru",
+      "subdomains": true,
+      "service": "Aviasales",
+      "category": "shopping",
+      "source": "https://aviasales.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "avs.io",
+      "subdomains": true,
+      "service": "Aviasales",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/aviasales#L1",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ostrovok.ru",
+      "subdomains": true,
+      "service": "Островок",
+      "category": "shopping",
+      "source": "https://ostrovok.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "travel.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Путешествия",
+      "category": "shopping",
+      "source": "https://travel.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex.travel",
+      "subdomains": true,
+      "service": "Яндекс Путешествия",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L87",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ozon.travel",
+      "subdomains": true,
+      "service": "Ozon Travel",
+      "category": "shopping",
+      "source": "https://ozon.travel/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sutochno.ru",
+      "subdomains": true,
+      "service": "Суточно.ру",
+      "category": "shopping",
+      "source": "https://sutochno.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "otello.ru",
+      "subdomains": true,
+      "service": "Отелло",
+      "category": "shopping",
+      "source": "https://otello.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "cian.ru",
+      "subdomains": true,
+      "service": "ЦИАН",
+      "category": "shopping",
+      "source": "https://cian.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "domclick.ru",
+      "subdomains": true,
+      "service": "Домклик",
+      "category": "shopping",
+      "source": "https://domclick.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "auto.ru",
+      "subdomains": true,
+      "service": "Авто.ру",
+      "category": "shopping",
+      "source": "https://auto.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "drom.ru",
+      "subdomains": true,
+      "service": "Дром",
+      "category": "shopping",
+      "source": "https://drom.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "exist.ru",
+      "subdomains": true,
+      "service": "Экзист",
+      "category": "shopping",
+      "source": "https://exist.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "emex.ru",
+      "subdomains": true,
+      "service": "Emex",
+      "category": "shopping",
+      "source": "https://emex.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "apteka.ru",
+      "subdomains": true,
+      "service": "Аптека.ру",
+      "category": "shopping",
+      "source": "https://apteka.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "eapteka.ru",
+      "subdomains": true,
+      "service": "ЕАПТЕКА",
+      "category": "shopping",
+      "source": "https://eapteka.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "zdravcity.ru",
+      "subdomains": true,
+      "service": "Здравсити",
+      "category": "shopping",
+      "source": "https://zdravcity.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gorzdrav.org",
+      "subdomains": true,
+      "service": "Горздрав",
+      "category": "shopping",
+      "source": "https://gorzdrav.org/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "stolichki.ru",
+      "subdomains": true,
+      "service": "Столички",
+      "category": "shopping",
+      "source": "https://stolichki.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "planetazdorovo.ru",
+      "subdomains": true,
+      "service": "Планета Здоровья",
+      "category": "shopping",
+      "source": "https://planetazdorovo.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "invitro.ru",
+      "subdomains": true,
+      "service": "ИНВИТРО",
+      "category": "shopping",
+      "source": "https://invitro.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gemotest.ru",
+      "subdomains": true,
+      "service": "Гемотест",
+      "category": "shopping",
+      "source": "https://gemotest.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "helix.ru",
+      "subdomains": true,
+      "service": "Хеликс",
+      "category": "shopping",
+      "source": "https://helix.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "medsi.ru",
+      "subdomains": true,
+      "service": "МЕДСИ",
+      "category": "shopping",
+      "source": "https://medsi.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "smclinic.ru",
+      "subdomains": true,
+      "service": "СМ-Клиника",
+      "category": "shopping",
+      "source": "https://smclinic.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "prodoctorov.ru",
+      "subdomains": true,
+      "service": "ПроДокторов",
+      "category": "shopping",
+      "source": "https://prodoctorov.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sberhealth.ru",
+      "subdomains": true,
+      "service": "СберЗдоровье",
+      "category": "shopping",
+      "source": "https://sberhealth.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "taxi.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Такси",
+      "category": "shopping",
+      "source": "https://taxi.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex.taxi",
+      "subdomains": true,
+      "service": "Яндекс Такси",
+      "category": "shopping",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L83",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "city-mobil.ru",
+      "subdomains": true,
+      "service": "Ситимобил",
+      "category": "shopping",
+      "source": "https://city-mobil.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "delimobil.ru",
+      "subdomains": true,
+      "service": "Делимобиль",
+      "category": "shopping",
+      "source": "https://delimobil.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kinopoisk.ru",
+      "subdomains": true,
+      "service": "Кинопоиск",
+      "category": "media",
+      "source": "https://kinopoisk.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kp.yandex.net",
+      "subdomains": true,
+      "service": "Кинопоиск",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/kinopoisk#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kinopoisk-ru.clstorage.net",
+      "subdomains": true,
+      "service": "Кинопоиск",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/kinopoisk#L2",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ivi.ru",
+      "subdomains": true,
+      "service": "Иви",
+      "category": "media",
+      "source": "https://ivi.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ivicdn.tv",
+      "subdomains": true,
+      "service": "Иви",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/category-entertainment-ru#L18",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "okko.tv",
+      "subdomains": true,
+      "service": "Okko",
+      "category": "media",
+      "source": "https://okko.tv/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "okkoapi.tv",
+      "subdomains": true,
+      "service": "Okko",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/okko#L1",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "okko.sport",
+      "subdomains": true,
+      "service": "Okko",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/okko#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "wink.ru",
+      "subdomains": true,
+      "service": "Wink",
+      "category": "media",
+      "source": "https://wink.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "more.tv",
+      "subdomains": true,
+      "service": "Wink",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/wink#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kion.ru",
+      "subdomains": true,
+      "service": "KION",
+      "category": "media",
+      "source": "https://kion.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "start.ru",
+      "subdomains": true,
+      "service": "START",
+      "category": "media",
+      "source": "https://start.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "premier.one",
+      "subdomains": true,
+      "service": "PREMIER",
+      "category": "media",
+      "source": "https://premier.one/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "amediateka.ru",
+      "subdomains": true,
+      "service": "Амедиатека",
+      "category": "media",
+      "source": "https://amediateka.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rutube.ru",
+      "subdomains": true,
+      "service": "RUTUBE",
+      "category": "media",
+      "source": "https://rutube.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rtbcdn.ru",
+      "subdomains": true,
+      "service": "RUTUBE",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rutube#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rutubelist.ru",
+      "subdomains": true,
+      "service": "RUTUBE",
+      "category": "media",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rutube#L2",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vkvideo.ru",
+      "subdomains": true,
+      "service": "VK Видео",
+      "category": "media",
+      "source": "https://vkvideo.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "music.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Музыка",
+      "category": "media",
+      "source": "https://music.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "music.vk.com",
+      "subdomains": true,
+      "service": "VK Музыка",
+      "category": "media",
+      "source": "https://music.vk.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "zvuk.com",
+      "subdomains": true,
+      "service": "Звук",
+      "category": "media",
+      "source": "https://zvuk.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "litres.ru",
+      "subdomains": true,
+      "service": "ЛитРес",
+      "category": "media",
+      "source": "https://litres.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rbc.ru",
+      "subdomains": true,
+      "service": "РБК",
+      "category": "media",
+      "source": "https://rbc.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ria.ru",
+      "subdomains": true,
+      "service": "РИА Новости",
+      "category": "media",
+      "source": "https://ria.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tass.ru",
+      "subdomains": true,
+      "service": "ТАСС",
+      "category": "media",
+      "source": "https://tass.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kommersant.ru",
+      "subdomains": true,
+      "service": "Коммерсантъ",
+      "category": "media",
+      "source": "https://kommersant.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vedomosti.ru",
+      "subdomains": true,
+      "service": "Ведомости",
+      "category": "media",
+      "source": "https://vedomosti.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "lenta.ru",
+      "subdomains": true,
+      "service": "Лента.ру",
+      "category": "media",
+      "source": "https://lenta.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gazeta.ru",
+      "subdomains": true,
+      "service": "Газета.ру",
+      "category": "media",
+      "source": "https://gazeta.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kp.ru",
+      "subdomains": true,
+      "service": "Комсомольская правда",
+      "category": "media",
+      "source": "https://kp.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sports.ru",
+      "subdomains": true,
+      "service": "Sports.ru",
+      "category": "media",
+      "source": "https://sports.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "championat.com",
+      "subdomains": true,
+      "service": "Чемпионат",
+      "category": "media",
+      "source": "https://championat.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rambler.ru",
+      "subdomains": true,
+      "service": "Рамблер",
+      "category": "media",
+      "source": "https://rambler.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс",
+      "category": "ecosystems",
+      "source": "https://yandex.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ya.ru",
+      "subdomains": true,
+      "service": "Яндекс",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L43",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yandex.com",
+      "subdomains": true,
+      "service": "Яндекс",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/yandex#L55",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vk.com",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://vk.com/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vk.ru",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L7",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vk.me",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L53",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "userapi.com",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L31",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vkuseraudio.net",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L44",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "vkuservideo.net",
+      "subdomains": true,
+      "service": "ВКонтакте",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/vk#L49",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "ok.ru",
+      "subdomains": true,
+      "service": "Одноклассники",
+      "category": "ecosystems",
+      "source": "https://ok.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "odnoklassniki.ru",
+      "subdomains": true,
+      "service": "Одноклассники",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/ok#L11",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mycdn.me",
+      "subdomains": true,
+      "service": "Одноклассники",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L116",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mail.ru",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://mail.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "bk.ru",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L125",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "inbox.ru",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L126",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "list.ru",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L128",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "imgsmail.ru",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L112",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "smailru.net",
+      "subdomains": true,
+      "service": "Mail",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L118",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dzen.ru",
+      "subdomains": true,
+      "service": "Дзен",
+      "category": "ecosystems",
+      "source": "https://dzen.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dzeninfra.ru",
+      "subdomains": true,
+      "service": "Дзен",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/dzen#L8",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "max.ru",
+      "subdomains": true,
+      "service": "MAX",
+      "category": "ecosystems",
+      "source": "https://max.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "oneme.ru",
+      "subdomains": true,
+      "service": "MAX",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mailru-group#L221",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mts.ru",
+      "subdomains": true,
+      "service": "МТС",
+      "category": "ecosystems",
+      "source": "https://mts.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mymts.ru",
+      "subdomains": true,
+      "service": "МТС",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/mts-ru#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "megafon.ru",
+      "subdomains": true,
+      "service": "МегаФон",
+      "category": "ecosystems",
+      "source": "https://megafon.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "mgfn.ru",
+      "subdomains": true,
+      "service": "МегаФон",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/megafon#L5",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "beeline.ru",
+      "subdomains": true,
+      "service": "Билайн",
+      "category": "ecosystems",
+      "source": "https://beeline.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "t2.ru",
+      "subdomains": true,
+      "service": "Т2",
+      "category": "ecosystems",
+      "source": "https://t2.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "tele2.ru",
+      "subdomains": true,
+      "service": "Т2",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/t2-ru#L3",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "yota.ru",
+      "subdomains": true,
+      "service": "Yota",
+      "category": "ecosystems",
+      "source": "https://yota.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rt.ru",
+      "subdomains": true,
+      "service": "Ростелеком",
+      "category": "ecosystems",
+      "source": "https://rt.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rostelecom.ru",
+      "subdomains": true,
+      "service": "Ростелеком",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/rostelecom#L4",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dom.ru",
+      "subdomains": true,
+      "service": "Дом.ру",
+      "category": "ecosystems",
+      "source": "https://dom.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "2gis.ru",
+      "subdomains": true,
+      "service": "2ГИС",
+      "category": "ecosystems",
+      "source": "https://2gis.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "2gis.com",
+      "subdomains": true,
+      "service": "2ГИС",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/2gis#L6",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "maps.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Карты",
+      "category": "ecosystems",
+      "source": "https://maps.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "gismeteo.ru",
+      "subdomains": true,
+      "service": "Гисметео",
+      "category": "ecosystems",
+      "source": "https://gismeteo.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "pogoda.yandex.ru",
+      "subdomains": true,
+      "service": "Яндекс Погода",
+      "category": "ecosystems",
+      "source": "https://pogoda.yandex.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "hh.ru",
+      "subdomains": true,
+      "service": "HeadHunter",
+      "category": "ecosystems",
+      "source": "https://hh.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "hhcdn.ru",
+      "subdomains": true,
+      "service": "HeadHunter",
+      "category": "ecosystems",
+      "source": "https://github.com/v2fly/domain-list-community/blob/664598567e92d797bea11bb83cf939d1f37e9512/data/headhunter#L4",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rabota.ru",
+      "subdomains": true,
+      "service": "Работа.ру",
+      "category": "ecosystems",
+      "source": "https://rabota.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "superjob.ru",
+      "subdomains": true,
+      "service": "SuperJob",
+      "category": "ecosystems",
+      "source": "https://superjob.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "consultant.ru",
+      "subdomains": true,
+      "service": "КонсультантПлюс",
+      "category": "ecosystems",
+      "source": "https://consultant.ru/",
+      "reason": "Есть сообщение сообщества об ограничении зарубежного доступа; проверка через VPN из российских сетей не выполнена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "garant.ru",
+      "subdomains": true,
+      "service": "Гарант",
+      "category": "ecosystems",
+      "source": "https://garant.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "kontur.ru",
+      "subdomains": true,
+      "service": "Контур",
+      "category": "ecosystems",
+      "source": "https://kontur.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "saby.ru",
+      "subdomains": true,
+      "service": "СБИС / Saby",
+      "category": "ecosystems",
+      "source": "https://saby.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sbis.ru",
+      "subdomains": true,
+      "service": "СБИС / Saby",
+      "category": "ecosystems",
+      "source": "https://saby.ru/news/about_sbis/01a158f2-ea40-7d0a-8e20-50e65d41305c",
+      "reason": "Дополнительный адрес сервиса; источник принадлежности указан отдельно. Совместимость с VPN не проверена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "rustore.ru",
+      "subdomains": true,
+      "service": "RuStore",
+      "category": "ecosystems",
+      "source": "https://www.rustore.ru/help/users/purchases-and-returns/link-bank-card",
+      "reason": "Официальная справка рекомендует отключить VPN при привязке банковской карты; это не утверждение о блокировке всего сервиса.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "1c.ru",
+      "subdomains": true,
+      "service": "1С",
+      "category": "ecosystems",
+      "source": "https://1c.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "moysklad.ru",
+      "subdomains": true,
+      "service": "МойСклад",
+      "category": "ecosystems",
+      "source": "https://moysklad.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "uchi.ru",
+      "subdomains": true,
+      "service": "Учи.ру",
+      "category": "ecosystems",
+      "source": "https://uchi.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "dnevnik.ru",
+      "subdomains": true,
+      "service": "Дневник.ру",
+      "category": "ecosystems",
+      "source": "https://dnevnik.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    },
+    {
+      "domain": "sferum.ru",
+      "subdomains": true,
+      "service": "Сферум",
+      "category": "ecosystems",
+      "source": "https://sferum.ru/",
+      "reason": "Популярный российский сервис: прямой доступ при включенной категории. Блокировка VPN не подтверждена.",
+      "checked_at": "2026-10-25"
+    }
   ]
 }
